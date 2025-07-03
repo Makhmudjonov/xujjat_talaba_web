@@ -2,7 +2,7 @@ import AccountPage from './pages/AccountPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Arizalar from './pages/admin/Arizalar';
 import Dashboard from './pages/Dashboard';
-import HujjatYuborish from './pages/HujjatYuborish';
+import HujjatYuborish from './pages/Punkt';
 
 
 const routes = [
