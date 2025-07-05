@@ -1,23 +1,32 @@
-// src/layouts/Layout.tsx
-
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { ReactNode } from 'react';
 import Sidebar from '../components/Sidebar';
-import AdminSidebar from '../components/admin/AdminSidebar';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { useMediaQuery } from '@mui/material';
 
-const Layout = () => {
-  const role = localStorage.getItem('role');
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const isMobile = useMediaQuery('(max-width:768px)');
+  const sidebarWidth = 220;
 
   return (
-    <div style={{ display: 'flex' }}>
-      {role === 'admin' || role === 'dekan' || role === 'kichik_admin'
-        ? <AdminSidebar />
-        : <Sidebar />
-      }
-
-      <main style={{ flex: 1, padding: '20px' }}>
-        <Outlet />
-      </main>
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+      <Sidebar />
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          marginLeft: isMobile ? 0 : `${sidebarWidth}px`,
+        }}
+      >
+        <Header />
+        <main style={{ flex: 1, padding: '20px' }}>{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -86,7 +86,7 @@ const Arizalar = () => {
 
   useEffect(() => {
     fetchApplications(currentPage);
-  }, []);
+  }, [currentPage]);
 
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;

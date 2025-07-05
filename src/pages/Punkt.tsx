@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
@@ -7,95 +8,81 @@ import {
   Typography,
   Grid,
   Button,
+  Divider,
   CircularProgress,
 } from "@mui/material";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkspacesIcon from "@mui/icons-material/Workspaces";
 
-/** --------------------------------------------------------------------
- *  ApplicationChoicePage
- *  -------------------------------------------------
- *  • If the student **has NOT** submitted an application yet →
- *    show 3 elegant option‑cards ("Talaba almashinuvi", "Ilmiy grant", 
- *    "Ixtisoslashtirilgan amaliyot").
- *    Each card is clickable (CardActionArea) and triggers onSelect(optionKey).
- *  • If **already submitted** → show a confirmation illustration with
- *    minimal info.
- *  • The API for these points isn’t ready yet, so the option list is
- *    hard‑coded for design purposes.
- * ------------------------------------------------------------------- */
+const API = "http://localhost:8000/api/student/application-types/";
 
-const API = "http://localhost:8000/api";
-
-interface StudentApplicationStatus {
-  hasSubmitted: boolean;
-  submittedOption?: string; // e.g. "talaba_almashinuvi"
+interface ApplicationType {
+  allowed_levels: any;
+  id: number;
+  key: string;
+  name: string;
+  subtitle: string;
+  icon?: JSX.Element;
+  can_apply: boolean;
+  reason: string | null;
 }
 
-const options = [
-  // ✅ Yangi 4 punkt
-  {
-    key: "toliq_grant",
-    title: "To'liq ta'lim granti",
-    desc: "O‘qish xarajatlari to‘liq qoplanadi.",
-    icon: <SchoolIcon sx={{ fontSize: 48, color: "#0288d1" }} />,
-  },
-  {
-    key: "toliq_bolmagan_grant",
-    title: "To'liq bo'lmagan ta'lim granti",
-    desc: "O‘qish xarajatlari qisman qoplanadi.",
-    icon: <SchoolIcon sx={{ fontSize: 48, color: "#0288d1" }} />,
-  },
-  {
-    key: "qoshimcha_davlat_granti",
-    title: "Qo'shimcha davlat granti",
-    desc: "Davlat tomonidan ajratiladigan qo‘shimcha moliyaviy yordam.",
-    icon: <WorkspacesIcon sx={{ fontSize: 48, color: "#8e24aa" }} />,
-  },
-  {
-    key: "oliy_talim_tashkiloti_granti",
-    title: "Oliy ta'lim tashkiloti granti",
-    desc: "Universitet yoki institut homiyligidagi grant.",
-    icon: <HowToRegIcon sx={{ fontSize: 48, color: "#fb8c00" }} />,
-  },
-
-  // Mavjud 3 punkt (avvalgi kodingizdan)
-  // {
-  //   key: "talaba_almashinuvi",
-  //   title: "Talaba almashinuvi",
-  //   desc: "Xorij universitetida semestr davomida o‘qish imkoniyati.",
-  //   icon: <SchoolIcon sx={{ fontSize: 48, color: "#0288d1" }} />,
-  // },
-  // {
-  //   key: "ilmiy_grant",
-  //   title: "Ilmiy grant",
-  //   desc: "Tadqiqot loyihalari uchun moliyaviy qo‘llab‑quvvatlash.",
-  //   icon: <WorkspacesIcon sx={{ fontSize: 48, color: "#8e24aa" }} />,
-  // },
-  // {
-  //   key: "amaliyot",
-  //   title: "Ixtisoslashtirilgan amaliyot",
-  //   desc: "Yetakchi kompaniyalarda amaliy tajriba.",
-  //   icon: <HowToRegIcon sx={{ fontSize: 48, color: "#fb8c00" }} />,
-  // },
-];
-
-
 const ApplicationChoicePage: React.FC = () => {
-  const [status, setStatus] = useState<StudentApplicationStatus | null>(null);
+  const [types, setTypes] = useState<ApplicationType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [gpa, setGpa] = useState<number | null>(null);
+  const [level, setLevel] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       try {
-        // 🔖 MOCK: The real GET should be to `${API}/application-status/`
-        // For design demo we pretend there is no submission yet.
-        const mock: StudentApplicationStatus = {
-          hasSubmitted: false,
-        };
-        setStatus(mock);
+        const token = localStorage.getItem("accessToken");
+        const res = await fetch(API, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) throw new Error("Application types fetch error");
+
+        const data = await res.json();
+
+        // Add icon and styling
+        const withIcons = data.map((item: ApplicationType) => {
+          let icon: JSX.Element;
+          switch (item.key) {
+            case "toliq_grant":
+            case "toliq_bolmagan_grant":
+              icon = <SchoolIcon sx={{ fontSize: 48, color: "#0288d1" }} />;
+              break;
+            case "qoshimcha_davlat_granti":
+              icon = <WorkspacesIcon sx={{ fontSize: 48, color: "#8e24aa" }} />;
+              break;
+            case "oliy_talim_tashkiloti_granti":
+              icon = <HowToRegIcon sx={{ fontSize: 48, color: "#fb8c00" }} />;
+              break;
+            default:
+              icon = <SchoolIcon sx={{ fontSize: 48 }} />;
+          }
+          return { ...item, icon };
+        });
+
+
+        setTypes(withIcons);
+
+        // GPA ni birinchi elementdan olish (hamma bir xil student uchun)
+        if (data.length > 0 && typeof data[0].student_gpa === "number") {
+          setGpa(data[0].student_gpa);
+        }
+
+        if (Array.isArray(data)) {
+          if (typeof data[0].student_level === "string") {
+            setLevel(data[0].student_level);
+          }
+        }
       } catch (e) {
         console.error(e);
       } finally {
@@ -104,7 +91,7 @@ const ApplicationChoicePage: React.FC = () => {
     })();
   }, []);
 
-  if (loading || !status) {
+  if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="40vh">
         <CircularProgress />
@@ -112,45 +99,38 @@ const ApplicationChoicePage: React.FC = () => {
     );
   }
 
-  // ------------------------------------------------------------------
-  // 1) Already submitted – show illustration
-  // ------------------------------------------------------------------
-  if (status.hasSubmitted) {
-    return (
-      <Box textAlign="center" mt={8}>
-        <CheckCircleOutlineIcon sx={{ fontSize: 120, color: "#4caf50" }} />
-        <Typography variant="h4" fontWeight={700} mt={2}>
-          Arizangiz yuborilgan!
-        </Typography>
-        <Typography variant="body1" mt={1} color="text.secondary">
-          Bizning jamoa arizangizni ko‘rib chiqmoqda. Natija haqida emailingizga
-          xabar beramiz.
-        </Typography>
-      </Box>
-    );
-  }
-
-  // ------------------------------------------------------------------
-  // 2) No submission yet – show option list
-  // ------------------------------------------------------------------
-  const handleSelect = (key: string) => {
-    // TODO: Navigate to application form or open dialog
-    alert(`Tanlangan: ${key}`);
+  const handleSelect = (key: string, id: number) => {
+    navigate(`/student/application-form/${id}`);
   };
 
   return (
     <Box>
-      <Typography variant="h4" fontWeight={700} align="center" sx={{ mt: 4, mb: 4 }}>
+      <Typography variant="h4" fontWeight={700} align="center" sx={{ mt: 4, mb: 1 }}>
         Ariza turini tanlang
       </Typography>
 
+      {gpa !== null && (
+        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 1 }}>
+          Sizning GPA ballingiz: <strong>{gpa}</strong>
+        </Typography>
+      )}
+
+      {level && (
+  <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 2 }}>
+    Sizning kursingiz: <strong>{level}</strong>
+  </Typography>
+)}
+
       <Grid container spacing={3}>
-        {options.map((opt) => (
-          <Grid size={{xs:12, sm:6, md:4}} key={opt.key}>
+        {types.map((opt) => (
+          <Grid size={{xs:10, sm:6, md:4}} >
             <Card
               component={CardActionArea}
-              onClick={() => handleSelect(opt.key)}
+              onClick={() => handleSelect(opt.key, opt.id)}
               sx={{
+                width: "100%",
+                height: "100%",
+                minHeight: 250,
                 p: 3,
                 textAlign: "center",
                 borderRadius: 3,
@@ -159,16 +139,29 @@ const ApplicationChoicePage: React.FC = () => {
                   transform: "translateY(-4px)",
                   boxShadow: 6,
                 },
+                opacity: opt.can_apply ? 1 : 0.5,
+                pointerEvents: opt.can_apply ? "auto" : "none",
               }}
             >
-              {opt.icon}
-              <CardContent sx={{ pt: 2 }}>
+              <Box>{opt.icon}</Box>
+              <CardContent sx={{ pt: 1 }}>
                 <Typography variant="h6" fontWeight={600} gutterBottom>
-                  {opt.title}
+                  {opt.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {opt.desc}
+                  {opt.subtitle}
                 </Typography>
+                <Divider sx={{ my: 2 }} />
+                {opt.allowed_levels && opt.allowed_levels.length > 0 && (
+                  <Typography variant="inherit" color="text.secondary">
+                    Ruxsat etilgan kurslar: {opt.allowed_levels.join(", ")}
+                  </Typography>
+                )}                
+                {!opt.can_apply && opt.reason && (
+                  <Typography variant="caption" color="error">
+                    {opt.reason}
+                  </Typography>
+                )}
               </CardContent>
             </Card>
           </Grid>
