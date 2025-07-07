@@ -6,22 +6,20 @@ import Arizalar from './Arizalar';
 import CheckAriza from './CheckAriza';
 import AdminLogin from './LoginPage';
 import AdminLayout from '../../layouts/AdminLayout';
+import CheckedArizalar from './checkedAriza';
 
 const AdminDashboard = () => {
   return (
     <Routes>
-      {/* Login sahifasi layoutdan mustaqil */}
-      <Route path="login" element={<AdminLogin />} />
+  <Route path="login" element={<AdminLogin />} />
+  <Route element={<AdminLayout />}>
+    <Route path="/" element={<Arizalar />} />
+    <Route path="applications" element={<Arizalar />} />
+    <Route path="check-ariza/:id" element={<CheckAriza />} />
+    <Route path="checked-applications" element={<CheckedArizalar />} />
 
-      {/* Boshqa sahifalar uchun umumiy layout */}
-      <Route element={<AdminLayout />}>
-        <Route path="/" element={<Arizalar />} />
-        <Route path="check-ariza/:id" element={<CheckAriza />} />
-        <Route path="applications" element={<Arizalar />} />
-
-        {/* boshqa admin sahifalar */}
-      </Route>
-    </Routes>
+  </Route>
+</Routes>
   );
 };
 

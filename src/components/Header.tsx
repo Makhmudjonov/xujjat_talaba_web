@@ -1,30 +1,48 @@
 import React from 'react';
-import { useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+
+// drawerWidth ni bu yerda endi ishlatish shart emas, chunki Layout uni boshqaradi.
+// const drawerWidth = 240; // Bu qatorni o'chiring yoki kommentga oling
 
 const Header = () => {
-  const isMobile = useMediaQuery('(max-width:600px)');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <header
-      style={{
-        backgroundColor: '#fff',
-        padding: isMobile ? '12px 16px' : '16px 24px',
-        borderBottom: '1px solid #dee2e6',
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
+    <AppBar
+      position="sticky"
+      elevation={1}
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        zIndex: theme.zIndex.appBar,
+        // *** BU YERDAGI ML VA WIDTH STYLLARINI OLIB TASHLANG ***
+        // Chunki ularni Layout boshqaradi. Header shunchaki o'zining otasining enini oladi.
+        // width: isMobile ? '100%' : `calc(100% - ${drawerWidth}px)`, // O'CHIRILSIN
+        // ml: isMobile ? 0 : `${drawerWidth}px`, // O'CHIRILSIN
+        // transition ham shart emas, chunki o'zgaradigan narsa yo'q
       }}
     >
-      <h1
-        style={{
-          margin: 0,
-          fontSize: isMobile ? '1.25rem' : '1.5rem',
-          textAlign: isMobile ? 'center' : 'left',
+      <Toolbar
+        sx={{
+          justifyContent: isMobile ? 'center' : 'flex-start',
+          padding: isMobile ? theme.spacing(1.5, 2) : theme.spacing(2, 3),
         }}
       >
-        TashMedUni.uz
-      </h1>
-    </header>
+        <Typography
+          variant={isMobile ? 'h6' : 'h5'}
+          component="h1"
+          sx={{
+            flexGrow: 1,
+            textAlign: isMobile ? 'center' : 'left',
+            fontWeight: 700,
+            color: theme.palette.primary.main,
+          }}
+        >
+          TashMedUni.uz
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 

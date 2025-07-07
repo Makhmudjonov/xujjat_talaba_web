@@ -4,19 +4,29 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  ListItemIcon,
   IconButton,
   Box,
   Typography,
   Divider,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link, useLocation } from 'react-router-dom';
+
+// Define the drawerWidth here and use it consistently.
+// This is the source of truth for sidebar width.
+const drawerWidth = 240;
 
 const Sidebar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const isMobile = useMediaQuery('(max-width:768px)');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -25,35 +35,79 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { path: '/account', label: '🏠 Account' },
-    { path: '/hujjat', label: '📤 Hujjat yuborish' },
+    { path: '/account', label: 'Hisobim', icon: <HomeIcon /> },
+    { path: '/hujjat', label: 'Hujjat yuborish', icon: <UploadFileIcon /> },
   ];
 
   const drawerContent = (
-    <Box sx={{ width: 220, bgcolor: '#343a40', color: '#fff', height: '100%' }}>
-      <Typography variant="h6" align="center" sx={{ p: 2 }}>
-        Dashboard
-      </Typography>
-      <Divider sx={{ bgcolor: '#555' }} />
-      <List>
-        {menuItems.map(({ path, label }) => (
-          <Link to={path} key={path} style={{ textDecoration: 'none' }}>
+    <Box
+      sx={{
+        width: drawerWidth, // Use the constant width
+        bgcolor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: theme.shadows[2],
+      }}
+    >
+      <Box sx={{ p: theme.spacing(2), borderBottom: `1px solid ${theme.palette.divider}` }}>
+        <Typography
+          variant="h6"
+          align="center"
+          sx={{ fontWeight: 600, color: theme.palette.primary.main }}
+        >
+          Talaba Paneli
+        </Typography>
+      </Box>
+      <List sx={{ flexGrow: 1 }}>
+        {menuItems.map(({ path, label, icon }) => (
+          <Link to={path} key={path} style={{ textDecoration: 'none', color: 'inherit' }}>
             <ListItemButton
               selected={location.pathname === path}
               sx={{
-                color: location.pathname === path ? '#0d6efd' : '#ffffff',
+                py: 1.5,
+                px: theme.spacing(2.5),
+                color: theme.palette.text.secondary,
                 '&.Mui-selected': {
-                  bgcolor: '#212529',
-                  color: '#0d6efd',
+                  bgcolor: theme.palette.action.selected,
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                  '& .MuiListItemIcon-root': {
+                    color: theme.palette.primary.main,
+                  },
+                },
+                '&:hover': {
+                  bgcolor: theme.palette.action.hover,
                 },
               }}
             >
-              <ListItemText primary={label} />
+              <ListItemIcon sx={{ minWidth: 40, color: 'inherit' }}>
+                {icon}
+              </ListItemIcon>
+              <ListItemText primary={label} primaryTypographyProps={{ fontWeight: 'inherit' }} />
             </ListItemButton>
           </Link>
         ))}
-        <ListItemButton onClick={handleLogout} sx={{ color: '#ffc107' }}>
-          <ListItemText primary="🚪 Chiqish" />
+      </List>
+      <Divider sx={{ bgcolor: theme.palette.divider }} />
+      <List sx={{ mt: 'auto', mb: theme.spacing(1) }}>
+        <ListItemButton
+          onClick={handleLogout}
+          sx={{
+            py: 1.5,
+            px: theme.spacing(2.5),
+            color: theme.palette.error.main,
+            '&:hover': {
+              bgcolor: theme.palette.action.hover,
+              color: theme.palette.error.dark,
+            },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 40, color: 'inherit' }}>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary="Chiqish" primaryTypographyProps={{ fontWeight: 500 }} />
         </ListItemButton>
       </List>
     </Box>
@@ -65,7 +119,18 @@ const Sidebar = () => {
         <>
           <IconButton
             onClick={() => setOpen(true)}
-            sx={{ position: 'fixed', top: 16, left: 16, zIndex: 1201, color: '#343a40' }}
+            sx={{
+              position: 'fixed',
+              top: theme.spacing(2),
+              left: theme.spacing(2),
+              zIndex: theme.zIndex.drawer + 1,
+              color: theme.palette.primary.main,
+              bgcolor: theme.palette.background.paper,
+              boxShadow: theme.shadows[1],
+              '&:hover': {
+                bgcolor: theme.palette.action.hover,
+              },
+            }}
           >
             <MenuIcon />
           </IconButton>
@@ -74,7 +139,21 @@ const Sidebar = () => {
           </Drawer>
         </>
       ) : (
-        <Box sx={{ position: 'fixed', height: '100vh' }}>{drawerContent}</Box>
+        // Desktop Sidebar - Make this Box fixed as well
+        <Box
+          sx={{
+            width: drawerWidth, // Use the constant
+            flexShrink: 0,
+            height: '100vh',
+            overflowY: 'auto',
+            borderRight: `1px solid ${theme.palette.divider}`,
+            // *** IMPORTANT CHANGE HERE ***
+            position: 'fixed', // This ensures it does not take up space in the main flow
+            zIndex: theme.zIndex.drawer, // Ensure it's above normal content but below mobile drawer
+          }}
+        >
+          {drawerContent}
+        </Box>
       )}
     </>
   );

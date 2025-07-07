@@ -1,10 +1,10 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CForm, CFormInput, CButton, CAlert, CContainer } from '@coreui/react';
+import { fetchWithAuth } from '../../utils/fetchWithAuth';
 
-const LoginPage = () => {
-  const [username, setUsername] = useState('');  // login => username
+const AdminLogin = () => {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -14,12 +14,12 @@ const LoginPage = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8000/api/komissiya/login/', {
+      const response = await fetchWithAuth('https://tanlov.medsfera.uz/api/admin/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),  // username sifatida yuboriladi
+        body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
@@ -29,13 +29,14 @@ const LoginPage = () => {
         localStorage.setItem('accessToken', data.access);
         localStorage.setItem('refreshToken', data.refresh);
         localStorage.setItem('fullName', data.user.full_name);
-        localStorage.setItem('role', data.role);
+        localStorage.setItem('role', data.user.role || 'admin');
 
-        // Masalan, admin dashboard yoki bosh sahifaga yo'naltirish
-        navigate('/admin');  // kerakli sahifaga yo'naltiring
+        // 🔁 Admin sahifaga yo‘naltirish
+        navigate('/admin');
+        window.location.reload()
       } else {
         const errData = await response.json();
-        setError(errData.detail || "Login yoki parol noto‘g‘ri");
+        setError(errData.detail || 'Login yoki parol noto‘g‘ri');
       }
     } catch (err) {
       setError('❌ Server bilan bog‘lanishda xatolik.');
@@ -45,7 +46,7 @@ const LoginPage = () => {
   return (
     <CContainer className="d-flex justify-content-center align-items-center vh-100">
       <div style={{ width: 400 }}>
-        <h2 className="text-center mb-4">🔐 Tizimga kirish</h2>
+        <h2 className="text-center mb-4">🛡️ Admin panelga kirish</h2>
 
         {error && <CAlert color="danger">{error}</CAlert>}
 
@@ -75,4 +76,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default AdminLogin;

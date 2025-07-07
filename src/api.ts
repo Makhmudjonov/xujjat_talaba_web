@@ -1,5 +1,5 @@
 // src/api.ts
-const baseURL = 'http://localhost:8000/api';
+const baseURL = 'https://tanlov.medsfera.uz/api';
 
 const getToken = () => localStorage.getItem('accessToken');
 

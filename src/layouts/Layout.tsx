@@ -1,33 +1,59 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery, useTheme, CssBaseline } from '@mui/material';
+import { Outlet } from 'react-router-dom';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+const drawerWidth = 240;
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const isMobile = useMediaQuery('(max-width:768px)');
-  const sidebarWidth = 220;
+const Layout: React.FC = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        minHeight: '100vh',
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      <CssBaseline />
+
+      {/* Sidebar */}
       <Sidebar />
-      <div
-        style={{
-          flex: 1,
+
+      {/* Asosiy kontent */}
+      <Box
+        component="div"
+        sx={{
+          flexGrow: 1,
           display: 'flex',
           flexDirection: 'column',
-          marginLeft: isMobile ? 0 : `${sidebarWidth}px`,
+          ml: isMobile ? 0 : `${drawerWidth}px`,
+          transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+          }),
         }}
       >
         <Header />
-        <main style={{ flex: 1, padding: '20px' }}>{children}</main>
+
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: theme.spacing(3),
+            overflowY: 'auto',
+          }}
+        >
+          <Outlet />
+        </Box>
+
         <Footer />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
