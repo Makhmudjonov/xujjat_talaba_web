@@ -254,8 +254,8 @@ const Arizalar: React.FC = () => {
           Filtrlar
         </Typography>
         <Grid container spacing={2} alignItems="center">
-          {/* Grid size={{xs:12, sm:6, md:4}} -> Grid item xs={12} sm={6} md={4} bo'lishi kerak */}
-          <Grid size={{xs:12, sm:6, md:4}}>
+          {/* Grid item xs={12} sm={6} md={4} -> Grid item xs={12} sm={6} md={4} bo'lishi kerak */}
+          <Grid item xs={12} sm={6} md={4}>
             <TextField
               label="Talaba F.I.Sh. yoki ID"
               variant="outlined"
@@ -267,7 +267,7 @@ const Arizalar: React.FC = () => {
             />
           </Grid>
           {/* Grid size={{xs:12, sm:6, md:3}} -> Grid item xs={12} sm={6} md={3} bo'lishi kerak */}
-          <Grid size={{xs:12, sm:6, md:3}}>
+          <Grid item xs={12} sm={6} md={3}>
             <FormControl fullWidth variant="outlined" size="small">
               <InputLabel id="status-filter-label">Status</InputLabel>
               <Select
@@ -286,7 +286,7 @@ const Arizalar: React.FC = () => {
             </FormControl>
           </Grid>
           {/* Grid size={{xs:12, sm:6, md:2}} -> Grid item xs={12} sm={6} md={2} bo'lishi kerak */}
-          <Grid size={{xs:12, sm:6, md:2}}>
+          <Grid item xs={12} sm={6} md={2}>
             <Button
               variant="outlined"
               color="secondary"

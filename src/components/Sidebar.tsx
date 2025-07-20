@@ -17,6 +17,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link, useLocation } from 'react-router-dom';
+import TestList from '../pages/questionList';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 // Define the drawerWidth here and use it consistently.
 // This is the source of truth for sidebar width.
@@ -35,8 +37,10 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { path: '/account', label: 'Hisobim', icon: <HomeIcon /> },
+    { path: '/account', label: 'Shaxsiy kabinet', icon: <HomeIcon /> },
     { path: '/hujjat', label: 'Hujjat yuborish', icon: <UploadFileIcon /> },
+    { path: '/tests', label: 'Testlar', icon: <MenuIcon /> },
+    { path: '/stats', label: 'Statistika', icon: <BarChartIcon /> },
   ];
 
   const drawerContent = (

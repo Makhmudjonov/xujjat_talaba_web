@@ -1,4 +1,3 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -8,14 +7,17 @@ import {
   Typography,
   Container,
   Alert,
-  Paper, // For the form's background
-  useTheme, // To access theme for consistent styling
+  Paper,
+  useTheme,
+  MenuItem, // Added for select dropdown
 } from '@mui/material';
 import { fetchWithAuth } from '../utils/fetchWithAuth'; // Assuming this utility is still needed
+import FloatingBanner from '../components/FloatingBanner';
 
 const LoginPage = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [university, setUniversity] = useState(''); // New state for university
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state for button
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ const LoginPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ login, password }),
+        body: JSON.stringify({ login, password, university}), // Include university in request
       });
 
       if (response.ok) {
@@ -52,7 +54,7 @@ const LoginPage = () => {
           case 'kichik_admin':
             navigate('/admin');
             break;
-          case 'student': // Assuming 'student' is the role for non-admins
+          case 'student':
             navigate('/account');
             break;
           default:
@@ -65,7 +67,7 @@ const LoginPage = () => {
         setError(errorData.detail || 'Foydalanuvchi nomi yoki parol xato.'); // Display specific error from backend
       }
     } catch (err) {
-      console.error("Login API call error:", err); // Log the actual error for debugging
+      console.error('Login API call error:', err); // Log the actual error for debugging
       setError('❌ Server bilan bog‘lanishda xatolik. Iltimos, keyinroq urinib ko‘ring.');
     } finally {
       setLoading(false); // Reset loading state
@@ -74,27 +76,27 @@ const LoginPage = () => {
 
   return (
     <Container
-      component="main" // Semantically represents the main content
-      maxWidth="xs" // Limits the width of the container for a better centered look
+      component="main"
+      maxWidth="xs"
       sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh', // Centers content vertically
-        backgroundColor: theme.palette.background.default, // Use theme's background color
-        p: theme.spacing(3), // Add some padding around the container
+        minHeight: '100vh',
+        backgroundColor: theme.palette.background.default,
+        p: theme.spacing(3),
       }}
     >
+      <FloatingBanner />
       <Paper
-        elevation={6} // Adds a nice shadow
+        elevation={6}
         sx={{
-          padding: theme.spacing(4), // Generous padding inside the form card
+          padding: theme.spacing(4),
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          width: '100%', // Ensure it takes full width up to maxWidth="xs"
-          // borderRadius: theme.shape.borderRadius * 2, // More rounded corners
+          width: '100%',
         }}
       >
         <Typography variant="h5" component="h2" sx={{ mb: theme.spacing(3), fontWeight: 600, color: theme.palette.primary.main }}>
@@ -108,10 +110,28 @@ const LoginPage = () => {
         )}
 
         <Box component="form" onSubmit={handleLogin} sx={{ width: '100%' }}>
+          {/* Universitet tanlash */}
           <TextField
-            margin="normal" // Adds default top/bottom margin
+            select
+            margin="normal"
             required
-            fullWidth // Makes the input take full width
+            fullWidth
+            id="university"
+            label="Universitet"
+            value={university}
+            onChange={(e) => setUniversity(e.target.value)}
+            variant="outlined"
+            sx={{ mb: theme.spacing(2) }}
+          >
+            <MenuItem value="tma">TTA</MenuItem>
+            <MenuItem value="sampi">ToshPTI</MenuItem>
+            <MenuItem value="stom">ToshDSI</MenuItem>
+          </TextField>
+
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             id="login"
             label="Login"
             name="login"
@@ -119,8 +139,8 @@ const LoginPage = () => {
             autoFocus
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            variant="outlined" // Gives a clear border
-            sx={{ mb: theme.spacing(2) }} // Custom bottom margin
+            variant="outlined"
+            sx={{ mb: theme.spacing(2) }}
           />
           <TextField
             margin="normal"
@@ -134,17 +154,17 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             variant="outlined"
-            sx={{ mb: theme.spacing(3) }} // Custom bottom margin
+            sx={{ mb: theme.spacing(3) }}
           />
           <Button
             type="submit"
             fullWidth
-            variant="contained" // Solid background color
+            variant="contained"
             color="primary"
-            disabled={loading} // Disable button while loading
+            disabled={loading}
             sx={{
-              py: theme.spacing(1.5), // Increase button height
-              fontSize: '1rem', // Larger font size for button text
+              py: theme.spacing(1.5),
+              fontSize: '1rem',
             }}
           >
             {loading ? 'Kirilmoqda...' : 'Kirish'}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import FloatingBanner from './FloatingBanner';
 
 // drawerWidth ni bu yerda endi ishlatish shart emas, chunki Layout uni boshqaradi.
 // const drawerWidth = 240; // Bu qatorni o'chiring yoki kommentga oling
@@ -23,6 +24,7 @@ const Header = () => {
         // transition ham shart emas, chunki o'zgaradigan narsa yo'q
       }}
     >
+      <FloatingBanner/>
       <Toolbar
         sx={{
           justifyContent: isMobile ? 'center' : 'flex-start',
@@ -39,7 +41,6 @@ const Header = () => {
             color: theme.palette.primary.main,
           }}
         >
-          TashMedUni.uz
         </Typography>
       </Toolbar>
     </AppBar>

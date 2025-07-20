@@ -1,0 +1,30 @@
+/* components/FloatingBanner.css */
+.floating-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.floating-banner span {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: scroll-text 25s linear infinite;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

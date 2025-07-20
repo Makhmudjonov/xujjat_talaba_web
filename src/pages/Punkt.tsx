@@ -11,7 +11,9 @@ import {
   Divider,
   CircularProgress,
   Container, // Import Container for better layout control
-  useTheme, // Import useTheme for theme access
+  useTheme,
+  FormControlLabel,
+  Checkbox, // Import useTheme for theme access
 } from "@mui/material";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
@@ -20,6 +22,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance'; // New icon
 import StarIcon from '@mui/icons-material/Star'; // New icon for full grant
 import GradeIcon from '@mui/icons-material/Grade'; // New icon for partial grant
 import { fetchWithAuth } from "../utils/fetchWithAuth"; // to‘g‘ri path yozing
+import { METHODS } from "http";
 
 
 const API = "https://tanlov.medsfera.uz/api/student/application-types/";
@@ -35,14 +38,21 @@ interface ApplicationType {
   reason: string | null;
   student_gpa?: number; // Added to interface if present in API response
   student_level?: string; // Added to interface if present in API response
+  student_toifa?: boolean;
 }
 
 const ApplicationChoicePage: React.FC = () => {
   const [types, setTypes] = useState<ApplicationType[]>([]);
+  console.log(types);
+  
   const [loading, setLoading] = useState(true);
   const [gpa, setGpa] = useState<number | null>(null);
   const [level, setLevel] = useState<string | null>(null);
   const [selectedApplicationId, setSelectedApplicationId] = useState<number | null>(null); // State to track selected card
+  const [checked, setChecked] = useState<boolean>(false);
+  console.log(checked);
+  
+  
 
   const navigate = useNavigate();
   const theme = useTheme(); // Access the theme for consistent styling
@@ -114,6 +124,17 @@ const ApplicationChoicePage: React.FC = () => {
   const handleSelect = (id: number) => {
     setSelectedApplicationId(id);
   };
+  
+  async function handleChangeToifa() {
+    const res = await fetchWithAuth(`https://tanlov.medsfera.uz/api/students/update-toifa/`,{
+      method: "PATCH",
+    })
+    if(res.ok){
+      window.location.reload()
+    }
+    
+  }
+  
 
   const handleContinue = () => {
     if (selectedApplicationId !== null) {
@@ -149,10 +170,35 @@ const ApplicationChoicePage: React.FC = () => {
           Sizning kursingiz: <Typography component="span" fontWeight={700} color={theme.palette.info.main}>{level}</Typography>
         </Typography>
       )}
+      <Box display="flex" justifyContent="center" mb={theme.spacing(4)}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={types[0].student_toifa}
+              onChange={handleChangeToifa}
+              sx={{
+                color: theme.palette.grey[500],
+                '&.Mui-checked': {
+                  color: theme.palette.info.main,
+                },
+              }}
+            />
+          }
+          label={
+            <Typography variant="body1" color="red" fontWeight={500}>
+                Siz ijtimoiy himoya reestrida turasizmi
+            </Typography>
+          }
+        />
+      </Box>
+
+
+
+      
 
       <Grid container spacing={theme.spacing(3)} justifyContent="center">
         {types.map((opt) => (
-          <Grid size={{xs:12, sm:6, md:4}} key={opt.id}> {/* Use 'item' prop for Grid children */}
+          <Grid item xs={12} sm={6} md={4} key={opt.id}> {/* Use 'item' prop for Grid children */}
             <Card
               component={CardActionArea}
               onClick={() => opt.can_apply && handleSelect(opt.id)} // Only allow selection if can_apply is true

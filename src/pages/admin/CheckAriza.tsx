@@ -225,7 +225,7 @@ const CheckAriza = () => {
       }
 
       setApplication({ ...application, status: 'approved' }); // Update local state
-      setSnackBarMessage("🎉 Ariza muvaffaqiyatli qabul qilindi!");
+      setSnackBarMessage("🎉 Ijtimoiy Faollik indeksimuvaffaqiyatli qabul qilindi!");
       setSnackBarSeverity('success');
       setSnackBarOpen(true);
       // Optional: Navigate back to applications list or refresh
@@ -277,7 +277,7 @@ const CheckAriza = () => {
   if (!application) {
     return (
       <Box sx={{ p: theme.spacing(3), textAlign: 'center' }}>
-        <Alert severity="info">Ariza topilmadi.</Alert>
+        <Alert severity="info">Ijtimoiy Faollik indeksitopilmadi.</Alert>
         <Button variant="outlined" sx={{ mt: 2 }} onClick={() => navigate('/admin/arizalar')}>
           Arizalar ro'yxatiga qaytish
         </Button>
@@ -289,7 +289,7 @@ const CheckAriza = () => {
     <Box sx={{ p: theme.spacing(3) }}>
       <Paper elevation={3} sx={{ p: theme.spacing(4), mb: theme.spacing(4), borderRadius: theme.shape.borderRadius }}>
         <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
-          Ariza #{application.id} Detallari
+          Ijtimoiy Faollik indeksi#{application.id} Detallari
         </Typography>
         {application.student && (
           <Box sx={{ mb: theme.spacing(2) }}>
@@ -302,7 +302,7 @@ const CheckAriza = () => {
           </Box>
         )}
         <Grid container spacing={2}>
-          <Grid size={{xs:12, sm:6}}>
+          <Grid item xs={12} sm={6}>
             <Typography variant="body1">
               <strong>Status:</strong>{" "}
               <Typography component="span" sx={{ color: getStatusColor(application.status), fontWeight: 'bold', textTransform: 'capitalize' }}>
@@ -310,12 +310,12 @@ const CheckAriza = () => {
               </Typography>
             </Typography>
           </Grid>
-          <Grid size={{xs:12, sm:6}}>
+          <Grid item xs={12} sm={6}>
             <Typography variant="body1">
               <strong>Yuborilgan:</strong> {new Date(application.submitted_at).toLocaleString('uz-UZ')}
             </Typography>
           </Grid>
-          <Grid size={{xs:12}}>
+          <Grid item xs={12}>
             <Typography variant="body1">
               <strong>Umumiy izoh:</strong> {application.comment || <span style={{ color: theme.palette.text.secondary }}>Kiritilmagan</span>}
             </Typography>
@@ -346,13 +346,13 @@ const CheckAriza = () => {
       )}
       {application.status === 'approved' && (
          <Alert severity="success" sx={{ mb: theme.spacing(3) }}>
-           Bu ariza allaqachon qabul qilingan.
+           Bu Ijtimoiy Faollik indeksiallaqachon qabul qilingan.
          </Alert>
       )}
 
 
       <Typography variant="h5" component="h2" gutterBottom sx={{ mt: theme.spacing(5), mb: theme.spacing(3), fontWeight: 600 }}>
-        Ariza Yo‘nalishlari
+        Ijtimoiy Faollik indeksiYo‘nalishlari
       </Typography>
 
       {application.items.length === 0 ? (

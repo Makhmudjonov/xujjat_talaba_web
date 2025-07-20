@@ -204,60 +204,92 @@ const AccountPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const theme = useTheme();
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const token = localStorage.getItem("accessToken");
+  //       if (!token) {
+  //         setError("Tizimga kirilmagan. Iltimos, qayta kiring.");
+  //         setLoading(false);
+  //         return;
+  //       }
+
+  //       const headers = { Authorization: `Bearer ${token}` };
+
+  //       // Fetch student data
+  //       const resStu = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/account/");
+  //       if (!resStu.ok) {
+  //         const errorData = await resStu.json();
+  //         throw new Error(errorData.detail || "Talaba ma'lumotlarini olishda xatolik yuz berdi.");
+  //       }
+  //       const stu: Student = await resStu.json();
+  //       setStudent(stu);
+
+  //       // // Fetch applications data
+  //       // const resApp = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/applications/");
+  //       // if (!resApp.ok) {
+  //       //   if (resApp.status !== 404) {
+  //       //     const errorData = await resApp.json();
+  //       //     console.error("Failed to fetch applications:", errorData);
+  //       //   }
+  //       //   setApplications([]);
+  //       // } else {
+  //       //   const apps: ApplicationStatus[] = await resApp.json();
+  //       //   setApplications(apps);
+  //       // }
+
+  //       // Fetch application items data
+  //       // const resItems = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/application-items/");
+  //       // if (!resItems.ok) {
+  //       //   if (resItems.status !== 404) {
+  //       //     const errorData = await resItems.json();
+  //       //     console.error("Failed to fetch application items:", errorData);
+  //       //   }
+  //       //   setApplicationItems([]);
+  //       // } else {
+  //       //   const items: ApplicationItem[] = await resItems.json();
+  //       //   setApplicationItems(items);
+  //       // }
+  //     } catch (err) {
+  //       setError((err as Error).message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem("accessToken");
-        if (!token) {
-          setError("Tizimga kirilmagan. Iltimos, qayta kiring.");
-          setLoading(false);
-          return;
-        }
-
-        const headers = { Authorization: `Bearer ${token}` };
-
-        // Fetch student data
-        const resStu = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/account/");
-        if (!resStu.ok) {
-          const errorData = await resStu.json();
-          throw new Error(errorData.detail || "Talaba ma'lumotlarini olishda xatolik yuz berdi.");
-        }
-        const stu: Student = await resStu.json();
-        setStudent(stu);
-
-        // Fetch applications data
-        const resApp = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/applications/");
-        if (!resApp.ok) {
-          if (resApp.status !== 404) {
-            const errorData = await resApp.json();
-            console.error("Failed to fetch applications:", errorData);
-          }
-          setApplications([]);
-        } else {
-          const apps: ApplicationStatus[] = await resApp.json();
-          setApplications(apps);
-        }
-
-        // Fetch application items data
-        const resItems = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/application-items/");
-        if (!resItems.ok) {
-          if (resItems.status !== 404) {
-            const errorData = await resItems.json();
-            console.error("Failed to fetch application items:", errorData);
-          }
-          setApplicationItems([]);
-        } else {
-          const items: ApplicationItem[] = await resItems.json();
-          setApplicationItems(items);
-        }
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        setError("Tizimga kirilmagan. Iltimos, qayta kiring.");
         setLoading(false);
+        return;
       }
-    };
-    fetchData();
-  }, []);
+
+      // Fetch student info (base64 coded)
+      const resStu = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/account/");
+      if (!resStu.ok) {
+        const errorData = await resStu.json();
+        throw new Error(errorData.detail || "Talaba ma'lumotlarini olishda xatolik yuz berdi.");
+      }
+
+      const encoded = await resStu.json(); // { data: "base64_string" }
+      const decodedStudent: Student = JSON.parse(atob(encoded.data));
+      setStudent(decodedStudent);
+
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
   // Determine custom icon for Stepper
   const getStepIcon = (status: string) => {
@@ -328,7 +360,7 @@ const AccountPage: React.FC = () => {
             }}
           >
             <Grid container spacing={4}>
-              <Grid size={{xs:12, md:4}}>
+              <Grid item xs={12} md={4}>
                 <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
                   <Avatar
                     alt={student.full_name}
@@ -349,7 +381,7 @@ const AccountPage: React.FC = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid size={{xs:12, md:8}}>
+              <Grid item xs={12} md={8}>
                 <Typography variant="subtitle1" fontWeight={700} mb={theme.spacing(1)} sx={{ color: PRIMARY_BLUE }}>
                   👤 Shaxsiy Maʼlumotlar
                 </Typography>
@@ -363,7 +395,7 @@ const AccountPage: React.FC = () => {
                     { label: "Tug‘ilgan sana", value: student.birth_date },
                     { label: "Manzil", value: student.address },
                   ].map((info, idx) => (
-                    <Grid size={{xs:12, sm:6}} key={idx}>
+                    <Grid item xs={12} sm={6} key={idx}>
                       <InfoItem label={info.label} value={info.value} />
                     </Grid>
                   ))}
@@ -379,7 +411,7 @@ const AccountPage: React.FC = () => {
                     { label: "Guruh", value: student.group },
                     { label: "Bosqich", value: student.level_name },
                   ].map((info, idx) => (
-                    <Grid size={{xs:12, sm:6}} key={idx}>
+                    <Grid item xs={12} sm={6} key={idx}>
                       <InfoItem label={info.label} value={info.value} />
                     </Grid>
                   ))}
@@ -504,7 +536,7 @@ const AccountPage: React.FC = () => {
 
                 {applicationItems.filter((item) => item.application === app.id).length > 0 && (
                   <Typography variant="body2" fontWeight={600} mt={2} mb={1}>
-                    Ariza Tafsilotlari:
+                    Ijtimoiy Faollik Indeksi hujjatlari:
                   </Typography>
                 )}
                 {applicationItems
@@ -550,7 +582,7 @@ const AccountPage: React.FC = () => {
             ))
           ) : (
             <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
-              Siz hali hech qanday ariza topshirmagansiz.
+              Siz hali hech qanday Ijtimoiy Faollik indeksini baholash tizimi.
             </Typography>
           )}
         </Card>

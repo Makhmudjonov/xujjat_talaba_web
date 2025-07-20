@@ -1,0 +1,1487 @@
+#Tohirni ota-onasi kimga unashtirishgan edilar? 
+-Nigor xonim 
+-Xonzoda begim 
+-Nodirabegim
++Robiya 
+
+#Tohir nega Robiyani qoʻrgʻonga borishga qoʻymaydi? 
+-Urush dovuli Quvaga yaqinlashib kelayotgani 
+-Andijon qoʻrgʻonida birorta bek tuzogʻiga ilinib qolishi 
+-Rashk tufayli
++A va B javob toʻgʻri 
+
+#Robiya tushida Tohirni qanday vahimali koʻradi? 
+-Uni yolgʻiz tashlab ketgani 
++Qora hoʻkiz xanjarday shoxlari bilan Tohirni suzgani 
+-Yonayotgan holda
+-Tohir boshqa qizga uylangani 
+
+#Tohirning Andijonda meʼmor boʻlib ishlaydigan togʻasining ismi nima boʻlgan? 
+-Mahmud 
++Fazliddin 
+-Boburbek
+-Sherimbek 
+
+#Ahmad Tanbal mulla Fazliddinga kimning rasmini chizishini aytadi? 
++Xonzoda begim
+-Robiya 
+-Zebuniso
+-Nigor xonim 
+
+#Mulla Fazliddin Ahmad Tanbaldan kimni suratini yashiradi va sandigʻida kimning surati boʻladi? 
+-Robiya 
++Xonzoda begim 
+-Zenubiso
+-Bobur 
+
+#Mulla Fazliddin kimga oshiq boʻladi?
++Xonzoda begim 
+-Hech kimga 
+-Fotima
+-Robiya 
+
+#Tohirga yogʻoch koʻprikni yoqishda kim yordam beradi? 
+-Mulla Fazliddin 
+-Doʻstbek 
+-Anvar
++Mahmud 
+
+#Tohir nega Robiyaning akasi Mahmud bilan tunda koʻprikni yondirish uchun Quvaning koʻprigi yoniga keladi? 
+-Yoliy qoʻshinlari kelayotgani 
+-Robiyani balo - qazodan asrash 
+-Boylik uchun
++A va B javob toʻgʻri 
+
+#Umarshayx Mirzoning birinchi xotini va ikkinchi xotinini ismi nima? 
+-Fotima Sulton 
+-Qutlugʻ Nigor xonim 
+-Zebuniso
++A va B javob toʻgʻri 
+
+#Umarshayx Mirzoning farzandlari nechta va ular necha yoshda boʻlgan? 
+-18 yoshli Xonzoda begim, Bobur 
+-10 yoshli Jahongir mirzo 
+-19 yoshli Fazliddin
++A va B javob toʻgʻri 
+
+#Urush vaqtida Bobur Mirzo qayerda boʻlgan? 
++Andijonda 
+-Margʻilonda 
+-Hirotda
+-Qoʻqonda 
+
+#Umarshayx Mirzo qayerda vafot etadi? 
+-Urush maydonida
++Kabutar honada 
+-Kkutubxonada
+-Taxtda 
+
+#Xonzoda begim va Mulla Fazliddin ark darvozasi tomon borganda yogʻiy qoʻlidan qochib ortlariga qaytishtimi? 
+-Xonzoda begim asr tushti 
++Mavlono Fazliddin asr tushdi 
+-Eson omon uyga qaytishdi
+-Ular kelganini yogʻiy bilmadi 
+
+#Qutlugʻ Nigor xonim Boburga: Esingizdami, otangiz sizga “Bobokalonimiz Amir Temurdan qolgan noyob meros bor, asrab-avaylab yuribman, katta boʻlganingizda beraman der edilar” - misralarda nima haqida gap ketyapti? 
++Sohibqiron Amir Temur qilichlari 
+-Sohibqiron Amir Temur oʻgitlari 
+- Sohibqiron Amir Temur tug‘lari
+-Sohibqiron Amir Temur bayrog‘i
+
+#Xonzoda begim hamma balolarga oʻzini tutib berib, ukasini yov qurshovidan xalos qilishi uchun kimni shartini qabul qiladi? 
++Shayboniyxon shartini 
+-Mavlono Fazliddin shartini 
+-Bobur Mirzoning
+-Buvisining shartini 
+
+#Bobur Oyisha begimning qaysi gaplaridan soʻng - “Bugundan boshlab menga xotin emassiz! Boshingiz ochiq! Shariat boʻyicha uch taloqsiz!” deb aytadi? 
+-Toj - u taxt 
+-Meros tufayli 
+-Xiyonatdan so‘ng
++Meni yana tashlab ketadigan boʻlsangiz, javobimni berib keting. 
+
+#Xonzoda begimning oʻgʻlining ismi nima? 
++Xurramshoh 
+-Qosimbek 
+-Bobur Mirzo
+-Safarbek 
+
+#Xonzoda begim farzandi Xurramshoh nima sababdan vafot etadi? 
+-Otilgan oʻq bolaning oʻng biqiniga sanchilishi 
+-Biqiniga sanchilgan oʻq oʻpka va qorin oraligʻidagi pardani yirtib, ichki aʼzolariga zarar yetkazgani 
+-Og‘ir sil kasalligidan so‘ng
++A va B javob toʻgʻri 
+
+#Bobur oʻgʻlining ismi nima? 
+-Qosimbek 
++Humoyun 
+-Begzod
+-Kalonbek 
+
+#Bobur oʻlimidan avval bolaligi oʻtgan qayerning osmonini eslaydi? 
++Andijon 
+-Kobul 
+-Samarqand
+-Hirot 
+
+#Tohir va Robiyaning farzandining ismi nima? 
++Safarbek 
+-Qosimbek 
+-Bobur
+-Jahongir 
+
+#“1% yaxshilanish” deganda Jeyms Kler nimani nazarda tutadi?
+-Har kuni yangi maqsad qo‘yish
++Har kuni oz bo‘lsa ham o‘z ustida ishlash
+-Odatlarni to‘satdan o‘zgartirish
+-Natijani ko‘proq muhokama qilish
+
+#Jeyms Kler asari bo‘yicha quyidagilardan qaysi biri odat shakllanishining birinchi bosqichi?
+-Javob
+-Istak 
++Signal
+-Mukofot
+
+#Jeyms Klerning fikriga ko‘ra maqsadga erishish uchun nima muhimroq?
+-Kuchli iroda
+-Katta reja
+-Mukofot
++Sistema (tizim)
+
+#Jeyms Kler fikricha quyidagilardan qaysi biri yaxshi odatni yaratish bo‘yicha to‘g‘ri qonun?
+-Qiyinlashtirish
+-Mukofotni yashirish
++Uni aniq qilish
+-Uni kechiktirish
+
+#Yomon odatni yo‘q qilishda qaysi yondashuv foydali?
+-Uni ko‘rinarli qilish
+-Javobni soddalashtirish
+-Uni jozibador qilish
++Signalni yo‘q qilish
+
+#Atom odatlar asaridagi  fikrni to‘ldiring: “Siz o‘z hayotingizni maqsadlar darajasida o‘zgartirmaysiz, siz uni _____ darajasida o‘zgartirasiz.”
+-Istaklar
+-Qiziqishlar
++Tizimlar
+-Tezlik
+
+#Jeyms Kler fikricha odat shaklanish sikli qaysi qatorda to‘g‘ri keltirilgan
+-Signal – Javob – Istak – Mukofot
++Signal – Istak – Javob – Mukofot
+-Istak – Signal – Javob – Mukofot
+-Mukofot – Signal – Istak – Javob
+
+#Atom odatlar asarida “Shaxsiyatga asoslangan odatlar” deganda nima nazarda tutiladi?
+-Odamlar bir xil odatni bajaradi
+-Odatlar xarakterga mos kelishi kerak
++Har bir odat sizning kimligingizni aks ettiradi
+-Odatlar faqat vazifalar asosida bo‘ladi
+
+#Quyidagi variantlardan qaysi biri muallifning fikriga zid?
+-Kichik o‘zgarishlar yirik natijalarga olib keladi
++Harakat qilishdan avval reja tuzish kerak
+-Ijobiy odatlar asta-sekin avtomatlashtiriladi
+-Odatlar vaqt o‘tishi bilan o‘zgaradi
+
+#Jeyms Kler fikricha Odatlarimiz qaysi narsalarga ko‘proq bog‘liq?
+-Motivatsiya
++Muhit
+-Iroda kuchi
+-Bilim
+
+#Atom odatlar asarida “Oson qilish” qonuni nimani anglatadi?
+-Odatiy ishni murakkablashtirish
+-Yomon odatni rad etish
++Odatni soddalashtirish va boshlashga qulaylik yaratish
+-Odatni yozib borish
+
+#James Clearning metodikasi qanday natijani maqsad qiladi?
+-Ko‘p ma’lumot to‘plash
+-Tezda o‘zgarish qilish
++Uzoq muddatli, barqaror natijalar
+-Muvaffaqiyat haqida o‘ylamaslik
+
+#Otabek Mirzakarim Qutidor bilan suhbatda savdogarlik orqali Rossiyaning qaysi shahriga borganligini aytadi?
+-Oqmachit
+-Volgograd
++Shamay
+-Orenburg
+
+#Otabek O‘tkan kunlarda kimni “tulki” deb ataydi?
++Azizbekni
+-Homidni
+-Sodiqni
+-Sodiqning onasi- Jannat opani
+
+#Azizbek bosh ko‘targanda unga qarshi Qo‘qon xonligi kimni yuboradi?
+-Musulmonqul
++Nurmuhammad
+-Homid
+-Xudoyorxon
+
+#Otabek va Kumushning nikohi uchun asosiy ishni kim qiladi?
++Hasanali
+-Homid
+-Oftob oyim
+-O‘zbek oyim
+
+#Zaynabning opasining ismi qaysi qatorda to‘g‘ri ko‘rsatilgan?
+-Xusnora
+-Xursanoy
+-Xurshida
++Xushro‘y
+
+#O‘tkan kunlar asarining asosiy voqealari qaysi 2 shaharda bo‘ladi?
+-Qo‘qon, Margilon
++Toshkent, Marg‘ilon
+-Toshkent, Qo‘qon
+-Toshkent, Namangan
+
+#Toshkent qamalidan so‘ng Azizbekka qarshi xalq qo‘zg‘olon sababi nima edi?
+-Mardikorlikka majburlash
+-Suvni to‘sib qo‘yishi
++Soliq solishi
+-Yusufbek hojini qamoqqa olishi
+
+#Abdulla Qodiriy O‘tkan kunlar asarini qaysi taxallusi bilan yozgan?
++Julqunboy
+-Qodir
+-Dumbul
+-Kalvak Maxsum
+
+#Mashhur kiroyi kuyaving shundog‘ bo‘lsa jumlasi kimning tilidan aytilgan?
+-Oftob oyim
+-To‘ybeka
++Mirzakarimboy
+-Hasanali
+
+#Otabek va Mirzakarimboy qutidor ilk qo‘lga olinganda qutulishiga sababchi xatni kim O‘tabboy qushbegiga keltiradi?
+-Yusufbek hoji
+-Zaynab
+-Hasanali
++Kumush
+
+#Elli besh yoshlar chamaliq, chala-dumbul tabi’atlik bir xotin bo‘lsa ham, ammo eriga o‘tkirligi bilan mashhur edi deya ta’riflangan ayol kim edi?
+-Homidning onasi
+-Mirzakarimboyning onasi
+-Oftob oyim
++O‘zbek oyim
+
+#Roman bosh qahramoni Rodion Raskolnikov qanday jinoyat sodir etadi?
+-O‘z raqibini o‘ldiradi
+-Boy bir savdogarni o‘ldiradi
++Foizchi kampir va uning singlisini o‘ldiradi
+-Pul so‘ragan talabani o‘ldiradi
+
+#Raskolnikovning jinoyatni sodir etishdagi asosiy falsafiy g‘oyasi nima edi?
+-Adolatni o‘rnatish
+-O‘zini isbotlash
++“Favqulodda shaxslar” oddiy qonunlardan ustun degan qarash
+-Ijtimoiy tizimga qarshi norozilik
+
+#Raskolnikov qaysi shaharda yashaydi?
+-Moskva
++Sankt-Peterburg
+-Kiev
+-Odessa
+
+#Porfiriy kim?
+-Raskolnikovning do‘sti
++Tergovchi, Raskolnikovning jinoyatini fosh etadi
+-Sonya akasi
+-Kampirning qarindoshi
+
+#Raskolnikov o‘zining jinoyatini avval kimga tan oladi?
+-Porfiriyga
+-Svidrigaylovga
++Soniya Marmeladovaga
+-O‘z onasiga
+
+#Sonya qanday asosiy ma’naviy timsolni anglatadi?
+-Tashqi go‘zallik
+-Falsafiy kurash
++Ma’naviy poklik va kechirimlilik
+-Ishonchsizlik va xiyonat
+
+#Raskolnikov kim bilan ichki ziddiyatga tushadi?
+-Svidrigaylov bilan
++O‘z falsafasi va vijdoni o‘rtasida
+-Porfiriy bilan
+-Dunyochka bilan
+
+#Svidrigaylov o‘z hayotini qanday yakunlaydi?
+-U Rossiyani tark etadi
++O‘z joniga qasd qiladi
+-Hibsga olinadi
+-Sonya bilan qochadi
+
+#Raskolnikovning ichki ozor va ruhiy azobi asarda qanday tasvirlanadi?
+-Tashqi ziddiyatlar orqali
+-Ustoz-shogird munosabati orqali
++Uning tushlari, monologlari va jimjitlikdagi iztiroblari orqali
+-Jangari sahnalar orqali
+
+#Raskolnikov o‘z falsafiy qarashini qaysi tarixiy shaxslar misolida asoslaydi?
++Napoleon va Sezar
+-Pushkin va Lermontov
+-Tolstoy va Turgenyev
+-Petr I va Ivan Grozniy
+
+#Avdotya Romanovna Raskolnikova kim?
+-Raskolnikovning sevgilisi
+-Raskolnikovning xotini
+-Raskolnikovning onasi
++Raskolnikovning singlisi
+
+#Rodion Raskolnikovga asar so‘ngida qanday jazo beriladi?
+-O‘lim jazosi
+-20 yillik qamoq
+-Jinnixonaga yotqizilgan
++Sibirga surgun
+
+#Alkimyogar asari qaysi yilda birinchi marta Portugaliyada nashr etilgan?
+-1985
++1988
+-1990
+-1993
+
+#Santiyagoning kasbi nima edi?
++Cho‘pon
+-Sotuvchi
+-O‘g‘ri
+-Bashoratchi
+
+#Santiago tush ko‘radi, tushida unga qayerda xazina topilishi ko‘rinadi?
+-Andalusiyada
+-Berber cho‘llarida
++Misr piramidalarining poydevorida
+-Tangier shahrida
+
+#Santiagoga tushining tabirini kim aytadi?
+-Darvesh
+-Folbin
+-Ruhoniy
++Sigan
+
+#Asarda muallif Santyagoning hamma odatini o‘zlashtirib olgan, hatto kundalik rejasidan ham boxabar deb kimlarni yoki nimalarni nazarda tutadi?
+-Cho‘pon do‘stlarini
+-Bo‘rilarni
+-Itlarni
++Qo‘ylarni
+
+#Asarda Santyago Maliksiddiqning podshoh bo‘lishiga qaramasdan yupun kiyinib yurishi boisi nimada deb o‘ylaydi?
+-Oddiy xalq undan hayiqmasligi uchun
+-O‘zi shunday kiyinishni yoqtirgani uchun
++Talonchilar talab ketmasligi uchun
+-Firibgarlarni yashirincha aniqlash uchun
+
+#Asarda Santyago billur sotuvchining savdo ishlari yurishishi uchun qanday usulni taklif qiladi?
+-Billur idishlarni yorqinroq qilib ishlashni
+-Billur idishlarni har xil yorqin ranglarga bo‘yashni
+-Billur idishlarni tashqariga chiqarib, bozorda sotishni
++Billur idishlarda odamlarga ichimlik quyib sotishni
+
+#Asarda qayd etilishicha, “insonga so‘nggi damlarda suv va havodek zarur” bo‘lgan narsa nima?
+-Aql-zakovat
++Sabr-qanoat
+-Qoniqish tuyg‘usi
+-Qalb kuchi
+
+#Asarda Santyago jim turishni kimdan yoki nimadan o‘rgangan edi?
+-Maliksiddiqdan
+-Qo‘ylardan
++Sahrodan
+-Bobosidan
+
+#Cho‘pon uchun odatiy hol bo‘lgan, hatto uning hayotini qiziqarli ham qiladigan narsa nima edi?
+-Sevgi
+-Qiziquvchanlik
+-Beparvolik
++Jur’at
+
+#Alkimyogarda qayd etilishicha, kimlar cho‘ponlarga o‘xshab qo‘y boqishmasa-da dunyo kezib yurishar edi?
+-Savdogarlar
+-Dengizchilar
++Lo‘lilar
+-Ritsarlar
+
+#Asarda noma’lum qariya Santyagoga aynan nimani “barcha kitoblarda yozilgan narsa” deb aytadi?
++Odam o‘z taqdirini tanlay olmasligi
+-Odam o‘z orzulariga, albatta, erishishi
+-Harakatlari bir kun kelib halokatga olib kelishi
+-Odamlar uchun bu olamda haqiqiy baxt mavjud emasligi
+
+#“Yulduzli tunlar” romanida ismi keltirilgan Mir Sarbarahna va Burxon gung kimlar edi? 
+-Mahhur hofizlar 
++Mashhur qiziqchilar 
+-Badiuzzamon beklari 
+-Hirotlik bastakorlar
+
+#“Yulduzli tunlar” romanida Boburga qarshi fitna uyushtirgan qaysi xiyonatkorning o‘g‘li kelajakda mashhur adib bo‘lib yetishadi? 
++Muhammad husayn 
+-Ali Do‘stbek 
+-Ahmad Tanbal 
+-Sherimbek
+
+#“Yaxshi me’mor hunarsiz aslzodaning 100 tasidan ustundir”. “Yulduzli tunlar” romanida keltirilgan ushbu so‘zlar qaysi personaj tomonidan aytilgan? 
+-Qutlug‘ Nigorxonim 
+-Fazliddin 
+-Bobur 
++Хonzodabegim 
+
+#“Yulduzli tunlar” romanida  qayd etilishichа, sahar paytida qal’a sukunatini buzib hazin surnay tovush yangradi. So‘ng unga qo‘sh nog‘ora tovushi jo‘r bo‘ldi. Ushbu surnay va nog‘ora saroy ahlini nimaga chorlayotgan edi? 
+-Namoz o‘qishga 
++Saharlik qilishga 
+-Jangga 
+-Xavfdan ogohlikka
+
+#“Yulduzli tunlar” romanida kim mulla Fazliddinga bir hamyon oltin berib Xonzodabegimning suratini chizdirmoqchi bo‘ladi? 
+-Uzun hasan 
++Ahmad Tanbal 
+-No‘yon ko‘kaldosh 
+-Qosimbek
+
+#“Yulduzli tunlar” romanida  Bobur qayerdagi jangda munajjim tufayli mag‘lub bo‘ladi? 
+-Dehli 
++Samarqand 
+-Andijon 
+-Panipat
+
+#“Yulduzli tunlar” romanida Bobur qaysi hukmdorlarni eslab, dunyoda orttirgan boyliklari qolib, qabrga bitta kafan bilan ketgani haqida aytib beradi? 
++Jamshid va Iskandar Zulqarnayn 
+-Amir Temur va ChingizХОn 
+-Husayn Boyqaro va Shohrux 
+-Afrosiyob va Siyovush
+
+#“Yulduzli tunlar” romanida qayd etilishichа, Shayboniyxonning asl ismi nima edi? 
+-Shoybog‘xon 
++Shohbaxt 
+-Shayboqxon 
+-Mahmud
+
+#“Yulduzli tunlar” romanida Osmon Yaylovda Bobur uchratgan cho‘pon yigit kim edi? 
+-Beklar talabi bilan o‘ldirilgan mirobning o‘g‘li. 
++Ahmad Tanbal o‘ldirgan chargak chorvadorning o‘g‘li. 
+-Samarqandda Shayboniyxon o‘ldirgan bekning o‘g‘li. 
+-Shayboniyxon yuborgan xufiya.
+
+#“Yulduzli tunlar” romanida Toxirning fikricha tushda qon ko‘rish nimaning belgisi?
++Yorug‘lik
+-Kulfat
+-Pushaymonlik
+-Yo‘qotish
+
+#“Yulduzli tunlar” asarida  ko‘rsatilgan voqealar qaysi tarixiy davrdan boshlanadi?
++Temuriylar inqirozi
+-Shayboniylar saltanati
+-Mang‘itlar hukumronligi
+-Samanid davlati
+
+#Asarda Bobur Mirzo qaysi tilni o‘rganishga intiladi?
+-Arabcha
+-Forscha
+-Turkiycha
++Hindcha
+
+#“Kecha va kunduz” romanida Zebining aytishichа, otasi kimning ismi tilga olinsa o‘lganini ham bilmas edi? 
+-Noib to‘ra 
+-Qurvonbibi 
++Eshon 
+-Mingboshi
+
+#“Kecha va kunduz” romanida Miryoqub qaysi kasb egalari mahmadona boʻladi deb hisoblar edi? 
+-Miroblar 
+-Savdogarlar 
++Advokatlar 
+-Gazetchilar
+
+#“Kecha va kunduz” romanida  kimga nisbatan odamlarning kissalariga yashirinchа qo‘l uzatgan kissavur ta’rifi ishlatilgan? 
+-Domla 
+-Aminlar 
++Eshon 
+-Mingboshilar 
+
+#“Kecha va kunduz” romanida Xiyonat uni shunday iflos joylarga olib kelgan najib oilaning rus qizi kim edi? 
+-Amanda Kravich 
++Mariya Ostrova  
+-Vera Vasilevna 
+-Mariya Osmanova 
+
+#“Kecha va kunduz” romanida Mingboshining yakka- yu yagona qizi kim edi? 
++Fazilat 
+-Poshshаxon 
+-Saltanat 
+-Xadichа 
+
+#“Kecha va kunduz” romanida Miryoqubning fikrichа, “kampirni pari qiz qilib ko‘rsatadigan toshoyna” nima edi? 
+-Bo‘yoq 
++Ichkilik 
+-Nashа 
+-Chilim 
+
+# “Kecha va kunduz” romanida Miryoqubning fikrichа, nima Noib toʻradan, uning pogonidan va Oqposhshodan iborat edi? 
+-Millat 
++Imperiya 
+-Fuqaro 
+-Rossiya
+
+# “Kecha va kunduz” romanida Mingboshiga qizini berishga Razzoq so‘fini ko‘ndirgan personaj kim edi? 
+-O‘gay akasi 
++Eshon bobo 
+-Miryoqub 
+-Xudoynazar 
+
+# “Kecha va kunduz” romanidagi qahramonlardan biri bo‘lgan Miryoqubning laqabi qaysi qatorda to‘g‘ri ko‘rsatilgan? 
+-Tunqotar 
++Epaqa 
+-Epko‘rmas 
+-Abjir
+
+# “Kecha va kunduz” romanida Razzoq so‘fi xotini Qurvonbibini nima deb chaqirar edi? 
+-Ezma 
++Fitna 
+-Eshak 
+-Fasod  
+
+#“Kecha va kunduz” romanida Razzoqso‘fi mingboshi ilk marotaba qizini so‘raganda qanday bahona qilgan edi? 
+-Mingboshi juda qari ekanini aytgandi. 
++Benamozga qiz bermayman degandi 
+-O‘zining kambag‘alligini aytgandi 
+-Mingboshining xotinboz ekanini aytgandi.
+
+#Asarda Kimsan bilan Robiyaning ma’lum oshida Rashid abzi nega g‘alati bo‘lib yurgan edi?
++Oqsoqolnikiga qoraxat kelgan edi
+-Zuhra kelin qochib ketganini bilar edi
+-Roziya qochib ketgan edi
+-"Kimsan bedarak yo‘qoldi" degan xat kelgan edi.
+
+#“Shafqatsiz odam diyonatsiz bo‘lar. lekin diyonatli bo‘lish uchun ham shafqatsiz bo‘lish kerak”. Asarda ushbu so‘zlar qaysi personaj tomonidan aytilgan edi?
++Kimsan
+-Orif oqsoqo
+-Shomurod
+-Umar zakunchi
+
+#Asarda qaysi personajga “osmondagi qushni bezaydigan chevar” deya ta’riflangan edi?
++Xolposh xola
+-Qora amma
+-Bashor
+-Parcha
+
+# “Dunyo o‘tkinchi deymiz. yo‘q, dunyo emas, biz o‘tkinchimiz. Bahor bir aylanib kelguncha birov tug‘iladi, birov o‘ladi”. Asarda ushbu so‘zlar qaysi personaj tomonidan aytilgn?
+-Orif oqsoqol
+-Qora amma
+-Shomurod
++Robiya
+
+#Asarda Rashid abzi qaysi voqeadan keyin ichishni tashlaydi?
+-Roziya tashlab ketgandan keyin
+-Cho‘loq bo‘lib qolgandan keyin
+-Urush tugagandan so‘ng
++Urush boshlangandan so‘ng
+
+#Asarda nomi keltirilgan folbinning ismi qaysi javobda to‘g‘ri ko‘rsatilgan?
+-Qoracha
+-Xolposh
++Og‘acha
+-Parcha
+
+#Asarda Orif oqsoqol nimani juda ham avaylar edi?
++Telefonni
+-Lampalarini
+-Ketmonini
+-Nosqovog‘ini
+
+#Qaysi qatorda Qora amma, Robiya va Shomuroddan anqib turadigan hidlar to‘g‘ri ketma-ketlikda berilgan javobni toping?
+-Lampamoy, gunafsha, tamaki
+-Gunafsha, ter, lampamoy
++Qatiq, lampamoy, tamaki
+-Traktor yog‘i, qatiq, tamaki
+
+#Asarda Orif oqsoqolning o‘g‘illari qanday halok bo‘lgan edi?
++Urushda tank yotib ketishi natijasida
+-Urushda bedarak yo‘qolishgandi
+-Urushda nemislar tomonidan osib o‘ldiriladi
+-Urushda otib o‘ldiriladi
+
+#Asarda Bashoratni erini butun qishloq nima deb chaqirar edi?
+-Tog‘a
++Rais
+-Aka
+-Pochcha
+
+#Ikki eshik orasi asari qaysi voqeadan boshlanadi?
+-Ikkinchi jahon urushi
++Toshkent zilzilasi
+-Stalin qatag‘onlari
+-Urushning tugashi
+
+#Munavvar qanday halok bo‘ladi?
+-Zilzila natijasida bino ostida qolib ketadi
++Barbiturate orqali o‘zini zaharlaydi
+-Yo‘l transport halokatiga uchrab
+-O‘zini tomirini kesadi
+
+#Asarda Lug‘umbekdagi maktabga shu yerlik aholi nima uchun “Oq maktab” deb nom berishgan edi?
+-Chor davlati nomiga hamohang ravishda
+-Bu yerda tuz koni bor bo‘lgani uchun
++Maktab oq rangga bo‘yalgani uchun
+-Maktab tomi oq rangli bo‘lgani uchun
+
+#Asarda Azizxon qaysi yozuvchining maktab darsliklarida “Ko‘kan Batrak” dostonini o‘qigan edi?
+-Oybek
+-Hamid Olimjon
++G‘afur G‘ulom
+-Shuhrat
+
+#Asarda Azizxon kimning eshagini yong‘oq daraxtining tepasiga osib qo‘ygan edi?
+-Esh polvonn
+-Rasul buvani
+-Ikrom akani
++Inoyat oqsoqolni
+
+#Asarda qayd etilishicha, qaysi polvon yangi tug‘ilgan buzoqni to sigir bo‘lguncha ko‘tarib katta qilgan, o‘zini og‘ir yuk ko‘tarishga shu usulda o‘rgatgan edi?
+-Esh polvon
+-Ali polvon
+-Do‘nan polvon
++Hojimuqon
+
+#Asarda Azizxon olib qochgan Lutfinisaning akasining ismi nima edi?
+-Ikrom
+-Umarali
+-Akrom
++Akbarali
+
+#Asarda Azizxon Kuyganyordagi dastlabki olishida, kimning yuragini yerga tekkizgan edi?
+-Yog‘och polvonni
++Qora polvonni
+-Esh polvonni
+-Ali polvonni
+
+#Asarda Ikrom aka batareyali priyomnikni qanday qo‘lga kiritgan edi?
++Kuygan nemis tankini ichidan olgan edi.
+-Marg‘ilon bozoridan sotib olgan edi.
+-"Qizil bayroq" ordenini olganda sovg‘a tariqasida berishgan edi.
+-Kanal qazishda dong taratganligi uchun sovg‘a qilishgan edi.
+
+#Asarda Nizomjonni qaysi sababga ko‘ra frontga olishmagan edi?
+-Oyog‘ini qiyshiq bosishi sababli
++Ikkita barmog‘ini tut kesayotganda tesha uzib ketganligi sababli.
+-Daraxtdan yiqilib tushib, qo‘lini sindirib olgani sababli.
+-Tug‘ma ikki barmog‘i yo‘q bo‘lganligi sababli.
+
+#Asarda o‘g‘lining dardida kuyib pishib, o‘glini o‘ylab oxiri kasal bo‘lib vafot etgan personaj kim edi?
+-To‘tixon
++Jannat
+-Risolat
+-Dildor
+
+#Asarda qaysi personaj Nayman cho‘llaridan o‘ziga tekkan uchastkani Nizomjonga uy solish uchun bergan edi?
+-To‘lanboy
++Ikromjon
+-Jamiyat
+-Rayimberdi
+
+#Asarda Dildor tufayli o‘z uyidan, dadasidan, opasidan, akasidan judo bo‘lgan personaj kim edi?
+-Ikromjon
+-Azimjon
+-To‘lanboy
++Nizomjon
+
+#45 kunda qurib bitkazilgan gidronimni toping?
++Katta Farg‘ona kanali
+-Katta Andijon kanali
+-Katta Namangan kanali
+-Katta Vodiy kanali
+
+#Asarda qayd etilishichа, Gulya Lagutina qahvaХОnaning eng tansiq taomi bo‘lmish qaysi ovqatni maqtay- maqtay oxirigachа tushirib olgan edi? 
+-Karamsho‘rva 
+-Achchiq mastava 
+-Sergo‘sht sho‘rva 
++Qizil sabzili palov 
+
+#Asarda Vika yozgan maktubga ko‘ra, Farhodning yoshlikdagi do‘sti Sur’at Nabiyev kimga uylangan edi?  
++Lidaga 
+-Malikaga 
+-Vikaga 
+-Natalyaga
+
+#Asarda keltirilgan quyidagi ta’riflar egasini toping!" Kinoshunos, moviyko‘z sohibjamol, duragaylardan, ajab ustozning ajabtovur kelini". 
+-Zebo 
+-Vika 
++Elmira Kamolova 
+-Zuhra 
+
+#Asarda aytilishichа, Lyusyana Fyodorovna turadigan uyning yonboshrog‘ida joylashgan stadionga Farhod talabalik yillari nima sababdan kelib turar edi? 
+-Stadionni tozalashga 
+-O‘shа yerda ishlar edi 
++O‘ris qizlar bilan voleybol o‘ynagani 
+-O‘rtoqlari bilan futbol o‘ynagani
+
+#Asarda keltirilishichа, Elmiraning dugonasi bo‘lgan Gulyaning asl ismi nima edi?  
+-Gulchehra 
+-Gulbadan 
++Gulgun 
+-Gulsevar 
+
+#Asarda keltirilishichа, Farhod Ramazonga umuman kutmagan odami bo‘lmish kimdan elektron pochta orqali maktub kelgan edi?  
+-Loladan 
+-Fidel Kastrodan 
++Ravshan Akobirovdan 
+-Otasidan
+
+#Asar xotimasida keltirilishichа, Viktoriya Farhodning yillar o‘tsa- da, o‘zgarmaganini, faqatgina nimasi o‘zgarganini aytgan edi? 
+-Ko‘zoynak taqib olgan edi 
++Sochi oqargan edi 
+-Ko‘zi xiralashgan edi 
+-Yuzida ajinlar paydo bo‘lgan edi 
+
+#Asarda qayd qilinishichа, Ustozning ziyoratiga borganda, albatta, nima bo‘lishi shart edi? 
+-Non 
+-Araq 
++“Oq laylak” konyagi 
+-Viski
+
+#Asarda qayd etilishichа, Vika Farhodnikiga bo‘layotgan mehmondorchilikka nima sababdan kela olmagan edi?  
++Boshi og‘riyotganligi uchun
+-Dugonasinikiga ketgani uchun 
+-Buvisining tobi yo‘qligi uchun 
+-Borishni ХОhlamagani uchun 
+
+#Asarda qayd qilinishichа, Farhod kimni" kinosho‘rlik" deb atagan edi? 
++O‘zini 
+-Ustozini 
+-Operatorni 
+-Rejissyorni
+
+#Asarda keltirilgan quyidagi ta’riflar egasini toping!" U Toshkent yaqinidagi mash’al bir kolxozning sobiq raisi, Sotsialistik Mehnat Qahramoni Mirkomil Zarxo‘jayarovning Xudodan tilab- tilab olgan arzandasi. Yoshligidan hech bir kamlik ko‘rmay iligi to‘q, ko‘zi to‘q o‘sgani bir tomon, yigitlik ko‘rkidan ham bas degunchа bergan edi unga". 
+-Gleb Aleksandrovich 
+-Platon Sokratovich 
++Adham Delon 
+-Farhod Ramazonov 
+
+#Asarda keltirilgan Farhodning fikriga ko‘ra, kimning yoniga tirraqi bir echki ko‘tarib borib, delanglagan qo‘y bilan qaytishar edi? 
++Rejissyorning 
+-Kinoboboning 
+-Vikaning 
+-San’atning 
+
+#Mirzo Ulug‘bek» asarida chotqol shunqori kim?
+-Bek Arslon
++Berdiyor
+-Yigitali
+-Ali Qushchi
+
+#M. Shayxzodaning «Mirzo Ulug‘bek» tragediyasi qanday she’riy shaklda yozilgan?
+-erkin she’rda
+-nasriy she’rda
+-barmoq vaznida
++oq she’rda
+
+#Mirzo Ulug‘bek» fojiasidagi Piri Zindoniyning asli ismi kim?
+-Berdiyor
+-Ota Murod
++Hasan O‘ng‘ar
+-Abboslar
+
+#Mirzo Ulug‘bek» fojiasida Ulug‘bekning o‘ldirilishi qayerda ro‘y beradi?
+-Ko‘ksaroyda
+-Ko‘hak tog‘ida
+-Oqsaroyda
++Ota Murodning hovlisida
+
+#“Mirzo Ulug‘bek” fojiasida Ulug‘bekni Abbos va Abdullatif sipohlaridan himoya qilgan navkar yigitlarning ismlari qaysi javobda to‘g‘ri qayd etilgan?
++Yigitali, Berdiyor
+-Ota Murod, Abdurazzoq
+-Ali Qushchi, iroqlik talaba
+-Piri Zindoniy, Berdiyor
+
+#Maqsud Shayxzodaning “Mirzo Ulug‘bek” fojiasida ozodlik uchun boshini dorga qo‘ygan - sarbadorlar farzandi bo‘lmish adolatsevar ohangar obrazi qaysi javobda to‘g‘ri ko‘rsatilgan?
++Piri Zindoniy
+-Ota Murod
+-Berdiyor
+-Ali Qushchi
+
+#Sen ham biroz kechikibsan, ko‘kning fonusi, Dushman meni yengolmasdi chiqsang, oldinroq». Shayxzodaning «Mirzo Ulug‘bek>> fojiasidan olingan yuqoridagi parchada Ulug‘bek kimga (nimaga) murojaat qilyapti?
+-Quyoshga
++Oyga 
+-Otamurodga
+-Feruzaga
+
+#Maqsud Shayxzodaning “Mirzo Ulug‘bek” tragediyasida Abdurazzoq sarbadorlar haqida kimdan eshitganligini aytgan?
+-Bek Arslondan
+-Mirzo Ulug‘bekdan
++Hofiz Abrudan 
+-Qozi Miskindan
+
+#Mirzo Ulug‘bekni kim o‘ldirishga buyuradi?
+-Abdulaziz
+-Abdulla
+-Abduqodir
++Abdulatif
+
+#Mirzo Ulug‘bek aynan shuncha davlat elchilarini qabul qiladi?
+-4
++5
+-6
+-7
+
+#Tragediyada Ulug‘bekning sevgili xotini kim edi?
++Firuza
+-Nigorxonim
+-Gavxarshodbegim
+-Nodira
+
+#Mirzo Ulug‘bek tragediyasida Ulug‘bekning tansoqchisi kim edi?
+-Bek Arslon
+-Abbos
++Berdiyor
+-Buroqbek
+
+#Kitob muallifi Jobsning shaxsiy xatolarini ham yashirmaganmi?**
++Ha, barcha detallar bilan
+-Yo‘q, faqat ijobiylari bilan
+-Qisman, faqat biznesdagi xatolarni
+-Faqat ijobiy yutuqlarni bergan
+
+#Kitobda “Stevenote” atamasi nimani anglatadi?**
+-Steve Jobsning seriali mobil telefonlari
++Bu – Steve Jobsning har yili beriladigan keynote nutqlari
+-Mobil ilovalar to‘plami
+-Apple TV orqali uzatilgan dasturlar
+
+#Kitobda Steve Jobs va Tim Cook o‘rtasidagi farq qanday tavsiflangan?**
+-Cook – kreativ, Jobs – tartib-intizom
++Jobs – diktator, Cook – delegatsiyaga moyil
+-Cook – ijobiy, Jobs – salbiy fikrlar bilan ish tutgan
+-Jobs – iqtisodchi, Cook – dizayner
+
+#Kitobda Steve Jobs-ning qaysi asosiy xususiyati yana ijobiy jihati sifatida qayd etiladi?**
+-Diplomatiya
+-Vijdonin doimiy nazorati
++G‘ayrioddiy talablari orqali mukammallikka intilishi
+-Katta moliyaviy o‘yinlar qilish
+
+#iPad birinchi bir million nusxada qancha vaqt ichida sotilgan?**
+-2 oy
+-6 oy
+-3 oy
++1 oy
+
+#Stiv Jobs  kitobda bu yangilik tahlil qilingan
+-iMac 1998
+-iPod 2001
+-iPhone 2007
++iPad 2010
+
+#Steve Jobs biografiyasini yozish uchun Isaacson necha tadan ziyod shaxs bilan suhbatlashgan?**
+-20+
+-40+
+-70+
++100+
+
+#Muallif Isaacson bundan oldin kimlar haqida ham biografiya yozgani ma’lum?**
++Albert Einstein va Benjamin Franklin
+-Bill Gates va Elon Musk
+-Thomas Edison va Nikola Tesla
+-Winston Churchill va Franklin Roosevelt
+
+#Kitob Apple’ning bozor qayta tiklanishidagi qaysi reklama kampaniyasini yoritadi?
++“Think Different”
+-“iThink”
+-“Mac vs PC”
+-“Be More Creative”
+
+#NeXT sotib olinishi orqali Jobs Apple’da qanday lavozimni egallaydi?
+-Menejer
++Bosh direktor (CEO)
+-Moliyaviy direktor
+-Tashkiliy bo‘lim boshlig‘i
+
+#Pixar’ni sotib olganda Steve Jobs qancha mablag‘ sarflagan?
+-$10 million
+-$30 million
++$50 million
+-$75 million
+
+#Steve Jobs Macworld’da qaysi mahsulotni “dunyodagi eng yupqa noutbuk” deb e’lon qilgan?
+-iMac
+-MacBook
++MacBook Air
+-PowerBook
+
+#"Atom odatlar" kitobining muallifi kim?
+-Stephen Covey
++James Clear
+-Brian Tracy
+-Robin Sharma
+
+#Muallifning fikricha, odat qanday boshlanadi?
+-Tushuncha bilan
+-Qandaydir muammo bilan
++Signal (cue) bilan
+-Hissiyot bilan
+
+#Kichik odatlarning kuchi nimada?
+-Ularni eslab qolish oson
+-Ular juda tez o‘zgaradi
++Vaqt o‘tishi bilan ular katta natija beradi
+-Ular noodatiy bo‘ladi
+
+#Odatlar qanday mexanizm asosida ishlaydi?
+-Eslab qolish, bajarish, unutish
+-Signal, ishtiyoq, javob, mukofot
+-Signal, turtki, jazo
++O‘rganish, takrorlash, o‘chirish
+
+#"Kim bo‘lishni xohlaysiz?" savoli qaysi tamoyilga bog‘liq?
+-Maqsadga
++Shaxsiyatga
+-Hissiyotga
+-Sovg‘aga
+
+#Yaxshi odatlarni shakllantirishda eng muhim narsa nima?
+-Katta kuch
+-To‘g‘ri vaqt
++Muhitni to‘g‘ri sozlash
+-Insonni majbur qilish
+
+#Kitobda necha bosqichli odat modeli tasvirlangan?
+-2
+-3
++4
+-5
+
+#Odatlar qachon o‘zgaradi?
++Qachonki shaxsiyat o‘zgarsa
+-Faqat yangi yil kunlari
+-Do‘stlar aytsa
+-Yangi joyga ko‘chib o‘tganda
+
+#Odatlarni yo‘qotishda muhim usullardan biri nima?
+-Esdan chiqarish
+-Mukofotni ko‘paytirish
++Signalni olib tashlash
+-Vaqtni o‘zgartirish
+
+#"Qancha ko‘p takrorlansa, shuncha mustahkamlanadi" degan g‘oya qanday nomlanadi?
+-O‘rganish nazariyasi
++Neyroplastiklik
+-Odatiy sikl
+-Kompound effekt
+
+#Odatlarni doimiy qilish uchun nima yordam beradi?
+-Har xil usullar
+-O‘zgaruvchan vaqt
++Aniqlik va barqarorlik
+-Sovrinlar
+
+#“Harakat emas, kim bo‘lishing muhim” degan g‘oya nimaga asoslanadi?
+-Intilishga
+-Natijaga
++Shaxsiyatga
+-Rejaga
+
+#“Ishlab chiqarish zavodiga borib, sportzalga o‘xshagan joyni ko‘rish” nima degani?
++Muhit ta’sirini anglatadi
+-Iste’mol qilishni
+-Ishni tez bajarishni
+-Yangi biznes yaratishni
+
+#“Vaqtni belgilash” qaysi tamoyilga kiradi?
+-O‘rganish
+-Rejaga sodiqlik
++Odatiy tartibni belgilash
+-Taklif qilish
+
+#“Osonlik tamoyili”ga muvofiq nima qilish kerak?
+-Ishni qiyinlashtirish
+-Uzoq kutish
++Harakatni soddalashtirish
+-Yordam olish
+
+#Odatni kundalik qilish uchun nima qilish kerak?
++Har kuni bir vaqtda bajarish
+-Hech nima qilmaslik
+-Unutish
+-Faqat istagan vaqtda qilish
+
+#Odatlarni shakllantirish uchun necha soniya ichida boshlash foydali?
+-60 soniya
+-30 soniya
++2 daqiqa
+-2 soniya
+
+#“O‘zingizga isbot qilish” nima degani?
+-Natijani boshqaga ko‘rsatish
+-O‘zingizni yengish
++Harakat orqali kimligingizni isbotlash
+-Tanqid qilish
+
+#Harakatga sabab bo‘ladigan kuch nima?
+-Signal
++Istak
+-Mukofot
+-Qiziqish 
+
+#Rejalarni bajarishda nima yordam beradi?
+-Haqiqiy natijani kutish
++Oson boshlanish
+-Katta turtki
+-Jazolash
+
+#“2 daqiqalik qoida” qaysi g‘oyani anglatadi?
+-Ishni 2 daqiqada tugatish
+-Ishni faqat 2 daqiqa davom ettirish
++Har qanday odatni boshlashni osonlashtirish
+-Har 2 daqiqada mukofot berish
+
+#Odatlar nima orqali mustahkamlanadi?
+-Kuchli motivatsiya bilan
++Takrorlash orqali
+-Yozib olish orqali
+-Jazolash orqali
+
+#“Shaxsiyatga asoslangan odatlar” deganda nima nazarda tutiladi?
++Kimligingizga mos odat
+-Tashqi ko‘rinish asosida
+-Do‘stlarning fikriga ko‘ra
+-Yashash joyiga qarab
+
+#Harakatlarni avtomatlashtirish qanday bosqich?
+-Birinchi
+-Ikkinchi
+-Oxirgi
++Takroriy
+
+#Odatlar orqali qanday natijaga erishiladi?
++Katta yutuqlarga
+-Do‘st orttirishga
+-Vaqt o‘tkazishga
+-Faoliyatdan qochishga
+
+#Qaysi usul yaxshi odatni mustahkamlaydi?
+-Uni bajarish vaqtini o‘zgartirish
+-Yaxshi natijani tasavvur qilish
++Uni boshqa odatga bog‘lash
+-Boshqalardan yashirish
+
+#Signal nimani bildiradi?
++Harakat boshlanishi
+-Istak tugashi
+-Javobning oxiri
+-Sovg‘aning boshlanishi
+
+#Odatlar qanday qilib tanani boshqaradi?
+-Fikrlashni o‘zgartirib
+-Rejalarni buzib
++Avtomatik ravishda ishlab
+-Jazolash orqali
+
+#Harakat zanjirini buzmaslik usuli qanday?
++Har kuni kamida 1 marta bajarish
+-Kun o‘tkazib yuborish
+-Boshqalarga topshirish
+-Odatni o‘zgartirish
+
+#“Vaqt o‘tishi bilan kimligingiz odatlaringizga aylanishi” degan g‘oya qanday ataladi?
+-Shaxsiyat modeli
++Identifikatsiya odatlari
+-Fikrga asoslangan nazariya
+-Kompound effekt
+
+#“Odatlarni kuzatish” usuli nima?
+-Kamera orqali kuzatish
++Harakatni yozib borish
+-Do‘stlardan so‘rash
+-Qiyoslash
+
+#“Ijobiy turtki” nima?
+-Mukofotdan keyingi his
++Yaxshi odat uchun signal
+-Yomon odatni kuchaytirish
+-Do‘stlarning bosimi
+
+#Agar odatni boshlash qiyin bo‘lsa, nima qilish kerak?
+-Butunlay voz kechish
++Uni eng oson shaklga keltirish
+-Boshqaga topshirish
+-Jazolash
+
+#Kichik yutuqlar nima beradi?
++Motivatsiya
+-Natija
+-Bosim
+-Shubha
+
+#“Vizual kuzatuv” deganda nima tushuniladi?
+-Tasvirga olish
++Odatni belgilab borish
+-Videoga olish
+-Boshqalarga ko‘rsatish
+
+#Qachonki biror odat kimligimizning bir qismiga aylansa, u...
++Osonroq davom etadi
+-Ko‘proq unutiladi
+-Tashqi yordam talab qiladi
+-Doimiy nazoratga muhtoj bo‘ladi
+
+#Signal ko‘payganda nima bo‘ladi?
+-Odatlar barham topadi
+-Diqqat chalg‘iydi
++Ko‘proq istak paydo bo‘ladi
+-Harakat to‘xtaydi
+
+#Qaysi tamoyil odatlarni barqaror qiladi?
+-Jazolash
+-Reja tuzish
++Davomiylik
+-So‘z berish
+
+#Yaxshi odatlarni qachon boshlash kerak?
+-Yil boshida
+-Dushanba kuni
++Har qanday vaqtda
+-Do‘stlar bilan
+
+#Rejani bajarmaslikka nima sabab bo‘ladi?
+-Signal yetishmasligi
+-Muhitga e’tiborsizlik
+-Tushunmovchilik
++Barchasi
+
+#Atom odatlar asarida ishni oson boshlash qanday natija beradi?
+-Natijaga olib keladi
++Bajarishni avtomatik qiladi
+-Ko‘proq vaqt talab qiladi
+-His-tuyg‘ularni kuchaytiradi
+
+#Harakatning to‘g‘ri bajarilishi uchun nima kerak?
+-Tezlik
+-Qiziqish
++Aniqlik
+-Motivatsiya
+
+#“Sizning hayotingiz odatlaringiz yig‘indisidir” degan ibora nimani bildiradi?
++Odatlar ta’siri katta
+-Yodingiz kuchli
+-Natijalar muhim emas
+-Rejalar keraksiz
+
+#Odat shakllanishiga qancha vaqt kerak?
+-21 kun
++Har kimga har xil
+-30 kun
+-60 kun
+
+#Qanday odat barqaror bo‘ladi?
++Oson, aniq va istalgan odat
+-Jazoga asoslangan odat
+-Og‘ir va murakkab odat
+-Faqat mukofotli odat
+
+#Qanday qilib signal yaratish mumkin?
++Telefon eslatmasi bilan
+-O‘zingizga baqirib
+-Do‘stingiz orqali
+-Ijtimoiy tarmoq orqali
+
+#“Atom odat” atamasi nimani bildiradi?
+-Qiyin odat
++Juda kichik odat
+-Harakatlar yig‘indisi
+-Juda kuchli odat
+
+#Har bir kichik odat aslida...
+-Vaqtni oladi
++Kimligingizni shakllantiradi
+-E’tiborga loyiq emas
+-Rejasiz bo‘ladi
+
+#“O‘tkan kunlar” romanining muallifi kim?
+-Oybek
++Abdulla Qodiriy
+-G‘afur G‘ulom
+-Cho‘lpon
+
+#“O‘tkan kunlar” asarida Otabek qanday kasb bilan shug‘ullanadi?
+-Dehqon
+-Hunarmand
++Savdogar
+-Dastyor
+
+#Otabekning otasi kim edi?
+-Jo‘rabek
+-Sodiq domla
++Yusufbek hoji
+-Hasanali
+
+#Otabek kimga chin dildan uylanadi?
+-Zaynabga
+-Robiyaga
++Kumushga
+-Sayyora xonimga
+
+#Kumushning onasining ismi nima edi?
++Robiya
+-Dilbar
+-Zaynab
+-Mahzuna
+
+#Zaynab obrazi asarda qanday ma’noda berilgan?
+-Ijobiy, mehribon xotin
+-Fidoiy ayol
++Yovuzlik va rashkning timsoli
+-Aql-zakovatli ayol
+
+#Kumush qanday tarzda vafot etadi?
+-Kasallikdan
+-Tabiiy o‘lim
+-O‘lik tug‘ilgan chaqaloqdan keyin
++Zaynab tomonidan zaharlab o‘ldiriladi
+
+#Otabek qayerlik yigit edi?
+-Qo‘qonlik
++Toshkentlik
+-Xivalik
+-Buxorolik
+
+#Otabek qanday qarashlarga ega yigit sifatida tasvirlanadi?
+-Eskilik tarafdori
+-Dunyoviylikdan yiroq
++Ilg‘or, ma’rifatparvar, yangilikka intiluvchi
+-Boylikka qiziqqan
+
+#Kumush qanday fe’l-atvorga ega edi?
+-Rashkchi, janjalkash
++Sabrlik, vafodor va mehrli
+-Ertaklardagi singari g‘ayrioddiy
+-Ezgulik va yovuzlik o‘rtasida ikkilanuvchi
+
+#Yusufbek hoji qanday inson sifatida tasvirlangan?
+-Zamonaviylik tarafdori
++Eskilikka tobelik bilan yashovchi, ammo oqilona fikr yurituvchi
+-Salbiy obraz
+-Birovlarning fikriga ergashuvchi
+
+#Zaynab nega Kumushga dushmanlik qiladi?
+-Kumush boyroq bo‘lgani uchun
+-Kumush uning singlisi bo‘lgani uchun
++Otabek Kumushni ko‘proq sevgani uchun
+-Kumush Zaynabning sirini ochgani uchun
+
+#Kumush va Zaynab o‘rtasidagi kurash qanday ma’no beradi?
+-Ayollar orasidagi oddiy raqobat
++Eski va yangi ayol timsollarining to‘qnashuvi
+-Ko‘pxotinlilik ijobiy tomonlari
+-Oila masalasidagi kelishuv
+
+#Asarda tasvirlangan jamiyatda qanday ijtimoiy muammo muhim o‘rin tutadi?
+-Tabiiy ofatlar
+-Erkaklar savodsizligi
++Ko‘pxotinlilik va diniy zulm
+-Iqtisodiy inqiroz
+
+#Otabekning siyosiy qarashlari qanday?
+-Mustamlakachilikni yoqlaydi
+-Urush tarafdori
++Yangilik, islohot va ma’rifat tarafdori
+-Hech qanday g‘oyasi yo‘q
+
+#Kumush qachon zaharlanadi?
+-To‘yda
+-Kasal bo‘lganida
++Yolg‘on aralashgan taom orqali
+-Zaynabning xizmatkori tomonidan
+
+#Otabek nega savdogarlikni tanlaydi?
+-Tez boyish uchun
+-Otasining izidan ketadi
++Yurtiga foyda keltirish istagida va Yevropa tajribasini qo‘llash uchun
+-Kumush shunga undagan
+
+#“O‘tkan kunlar” asarida “vatan”, “xalq”, “millat” tushunchalari qanday ifodalanadi?
++Bilvosita, obrazlar orqali
+-Bevosita, shiorlar orqali
+-Hech eslatilmaydi
+-Tushunarli qilib yozilgan maqolalar bilan
+
+#“O‘tkan kunlar” asari qaysi adabiy uslubda yozilgan?
++Realistik
+-Lirika
+-Satira
+-Fantastika
+
+#Asarda Zaynab va Kumush o‘rtasidagi ziddiyat qanday tugaydi?
+-Zaynab g‘alaba qiladi
+-Kumush Zaynabni kechiradi
++Zaynab Kumushni zaharlaydi va Kumush vafot etadi
+-Otabek Zaynab bilan ajrashadi
+
+#Yusufbek hoji qanday ijtimoiy tabaqani ifodalaydi?
+-Dehqonlar sinfi
+-Zodagonlar
++O‘rta sinf, dindor, an’anaparast savdogar
+-Amaldorlar
+
+#Otabek Toshkentdan Qo‘qonga nima uchun yo‘l oladi?
+-Kumushni ko‘rish uchun
+-Siyosiy faollik bilan shug‘ullanish uchun
++Savdo ishlari va ilg‘or fikrli kishilar bilan aloqada bo‘lish uchun
+-O‘zini yashirish uchun
+
+#“O‘tkan kunlar” romanida qanday tarixiy davr aks etadi?
+-Amir Temur davri
+-XIX asr oxiri – XX asr boshidagi Turkiston
++Sovetlar hukmronligi
+-Mustaqillik davri
+
+#Otabekning islohotchi qarashlari kim tomonidan qo‘llab-quvvatlanmaydi?
+-Yusufbek hoji
+-Savdogarlar
++Eski qarashdagi xalq vakillari
+-Kumush
+
+#Kumush qanday ayol timsoli sifatida berilgan?
+-Faol siyosiy arbob
+-Ilmsiz va itoatkor ayol
++Ilg‘or fikrli, vafodor, sabrli, yangicha ayol tipi
+-Erkaklarga qarshi kurashuvchi obraz
+
+#Otabek obrazida qanday g‘oya mujassam?
+-Avtoritar boshqaruvni qo‘llab-quvvatlash
++Milliy uyg‘onish, islohotparvarlik
+-Ko‘pxotinlilikni oqlash
+-G‘arbga ko‘r-ko‘rona taqlid
+
+#“O‘tkan kunlar” romani ilk marta qayerda e’lon qilingan?
+-“Shuhrat” jurnalida
++“Inqilob sadosi” gazetasi
+-“Yosh kuch” jurnalida
+-“Sadoi Turkiston”da
+
+#Kumush vafotidan so‘ng Otabekning ruhiy holati qanday bo‘ladi?
+-Tezda o‘zini tiklaydi
+-Boshqa ayolga uylanadi
++Ruhiy tushkunlikka tushadi
+-Ko‘proq savdo bilan ovora bo‘ladi
+
+#Zaynabning rashkchi fe’li nima bilan tugaydi?
+-U qamoqqa olinadi
+-O‘zi o‘z joniga qasd qiladi
++Kumushni zaharlaydi, so‘ng pushaymon bo‘ladi
+-U Kumush bilan do‘stlashadi
+
+#“O‘tkan kunlar” romani qahramonlarining nutqida qanday til uslubi qo‘llangan?
+-Zamonaviy til
++Arxaik va shevaga boy til
+-Ruscha jumlalar ko‘p
+-Faqat diniy terminologiya
+
+#Kumush qanday ijtimoiy g‘oyani ifodalaydi?
++Ayollar erkinligi va mustaqilligi
+-An’anaviy qadriyatlarga sadoqat
+-Ko‘pxotinlilik tarafdori
+-Millatga xiyonat
+
+#Otabek o‘z qarashlarini qanday yo‘l bilan amalga oshirishga harakat qiladi?
+-Zo‘ravonlik orqali
+-Siyosiy partiya tuzadi
++Amaliy faoliyat – savdogarlik va halol mehnat orqali
+-Diniy jihatdan yo‘l ko‘rsatadi
+
+#Kumush va Zaynab ziddiyatidan qanday xulosa chiqarish mumkin?
+-Har ikki ayol sog‘lom raqobatdadir
++Rashk va hasad ko‘p xatolarga olib keladi
+-Zaynab g‘olib bo‘ladi
+-Ikki ayol o‘rtasida mehr kuchli
+
+#Otabek asar davomida qanday ma’naviy o‘sish bosqichidan o‘tadi?
++Passivlikdan yetakchilikka
+-Boylikdan faqirlikka
+-Dindorlikdan kofirlikka
+-Xushomadgo‘ylikdan mustaqil fikrga
+
+#“O‘tkan kunlar” asarida milliy uyg‘onish g‘oyasi qaysi obraz orqali chuqur ifodalanadi?
+-Kumush
+-Zaynab
++Otabek
+-Yusufbek hoji
+
+#“Jinoyat va jazo” asarining muallifi kim?
+-Lev Tolstoy
+-Anton Chexov
++Fyodor Dostoyevskiy
+-Maksim Gorkiy
+
+# “Jinoyat va jazo” asarining bosh qahramoni kim?
+-Dmitriy Karamazov
++Rodion Raskolnikov
+-Arkadiy Svidrigaylov
+-Pyotr Luzhin
+
+#Raskolnikovning qilgan jinoyati nima edi?
+-Firibgarlik
+-Bankdan o‘g‘rilik
++Foizga pul beruvchi kampirni va uning singlisini o‘ldiradi
+-Svidrigaylovni o‘ldiradi
+
+#Raskolnikov nega jinoyat qiladi?
+-Boyish uchun
+-Faqat g‘azabdan
++O‘z nazariyasini amalda sinash uchun
+-Kumushni topish uchun
+
+#“Jinoyat va jazo” asarida Sonia Marmeladova kim?
+-Raskolnikovning singlisi
+-Luzhinning rafiqasi
++Gunohdan poklanishga yo‘l ko‘rsatuvchi ayol
+-Detektiv
+
+#Dunya (Dunya Raskolnikova) kim?
+-Raskolnikovning onasi
+-Sonia
++Raskolnikovning singlisi
+-Luzhinning opasi
+
+#Raskolnikov qanday nazariyani ilgari suradi?
+-Inson tengligi nazariyasi
++“Oddiy” va “nodir” insonlar nazariyasi
+-Jinoyat – bu zarurat degan nazariya
+-Evolyutsion nazariya
+
+#Svidrigaylov qanday obraz sifatida tasvirlangan?
+-Sof yurakli vatanparvar
+-Ijobiy kuch ramzi
++Nafs va gunoh ifodasi
+-Sudya
+
+#Raskolnikov qaysi shaharda yashaydi?
+-Moskva
++Peterburg
+-Kiev
+-Tver
+
+#Raskolnikov o‘z jinoyatini kimga birinchi bo‘lib tan oladi?
+-Sudga
++Sonia Marmeladovaga
+-Detektiv Porfiriyga
+-Opasiga
+
+#Raskolnikov jinoyat qurolini qayerdan oladi?
+-Temirchi do‘konidan
+-Pazandachilik pichog‘i
+-Qurilish ustasining bolg‘asi bo’ladi
++Uy egasining boltasini yashirincha oladi
+
+#Porfiriy Petrovich kim?
+-Raskolnikovning ustozi
+-Jinoyat sodir bo‘lgan uy egasi
++Tergovchi
+-Sonia Marmeladovaning akasi
+
+#Sonia qanday tirikchilik bilan shug‘ullanadi?
+-O‘qituvchilik
++Fohishalik
+-Do‘konda ishlaydi
+-Kasalxona hamshirasi
