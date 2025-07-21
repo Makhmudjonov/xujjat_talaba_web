@@ -86,7 +86,9 @@ export const ApplicationForm: React.FC<FormProps> = ({
   applicationTypeId,
   onSuccess,
 }) => {
-  const [directionFiles, setDirectionFiles] = useState<Record<number, File | null>>({});
+  const [directionFiles, setDirectionFiles] = useState<
+    Record<number, File | null>
+  >({});
   const [loading, setLoading] = useState(false);
   const [submissionMessage, setSubmissionMessage] = useState<{
     type: "success" | "error";
@@ -130,7 +132,8 @@ export const ApplicationForm: React.FC<FormProps> = ({
         direction: dir.id,
         student_comment: "",
         ...(dir.type === "gpa" && dir.gpa !== null && { gpa: dir.gpa }),
-        ...(dir.type === "test" && dir.test_result !== null && { test_result: dir.test_result }),
+        ...(dir.type === "test" &&
+          dir.test_result !== null && { test_result: dir.test_result }),
         files: fileMeta,
       };
     });
@@ -145,20 +148,28 @@ export const ApplicationForm: React.FC<FormProps> = ({
     });
 
     try {
-      const res = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/applications/", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetchWithAuth(
+        "https://tanlov.medsfera.uz/api/student/applications/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setSubmissionMessage({
           type: "error",
-          message: data.detail || "Xatolik yuz berdi. Iltimos, ma'lumotlarni tekshiring.",
+          message:
+            data.detail ||
+            "Xatolik yuz berdi. Iltimos, ma'lumotlarni tekshiring.",
         });
       } else {
-        setSubmissionMessage({ type: "success", message: "Arizangiz muvaffaqiyatli yuborildi." });
-        
+        setSubmissionMessage({
+          type: "success",
+          message: "Arizangiz muvaffaqiyatli yuborildi.",
+        });
+
         setTimeout(() => {
           const cleared: Record<number, File | null> = {};
           directions.forEach((d) => (cleared[d.id] = null));
@@ -228,13 +239,16 @@ export const ApplicationForm: React.FC<FormProps> = ({
               borderColor: (t) => t.palette.grey[300],
             }}
           >
-            Ijtimoiy faollik mezonlariga hujjatlarni (yoki natijalarni) taqdim eting
+            Ijtimoiy faollik mezonlariga hujjatlarni (yoki natijalarni) taqdim
+            eting
           </Typography>
 
           {directions.map((dir, idx) => {
             const file = directionFiles[dir.id];
             const sectionName =
-              typeof dir.section === "object" && dir.section?.name ? ` (${dir.section.name})` : "";
+              typeof dir.section === "object" && dir.section?.name
+                ? ` (${dir.section.name})`
+                : "";
             const isGpa = dir.type === "score";
             const isTest = dir.type === "test";
 
@@ -249,11 +263,19 @@ export const ApplicationForm: React.FC<FormProps> = ({
                 </Typography>
 
                 {isGpa && (
-                  <Typography variant="body2" color="text.secondary" sx={{ ml: { xs: 0, sm: 2 }, mb: 1 }}>
-                    <Box component="span" sx={{ fontWeight: "bold", color: "text.primary" }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ ml: { xs: 0, sm: 2 }, mb: 1 }}
+                  >
+                    <Box
+                      component="span"
+                      sx={{ fontWeight: "bold", color: "text.primary" }}
+                    >
                       GPA: {dir.gpa}
                     </Box>{" "}
-                    ball asosida avtomatik hisoblanadi. Hujjat yuklash shart emas.
+                    ball asosida avtomatik hisoblanadi. Hujjat yuklash shart
+                    emas.
                   </Typography>
                 )}
 
@@ -265,12 +287,22 @@ export const ApplicationForm: React.FC<FormProps> = ({
                       justifyContent="space-between"
                       flexWrap="wrap"
                     >
-                      <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
-                        <Box component="span" sx={{ fontWeight: "bold", color: "text.primary" }}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ mr: 2 }}
+                      >
+                        <Box
+                          component="span"
+                          sx={{ fontWeight: "bold", color: "text.primary" }}
+                        >
                           Test natijasi:
                         </Box>{" "}
                         {dir.test_result !== null ? (
-                          <Box component="span" sx={{ fontWeight: "bold", color: "primary.dark" }}>
+                          <Box
+                            component="span"
+                            sx={{ fontWeight: "bold", color: "primary.dark" }}
+                          >
                             {dir.test_result}
                           </Box>
                         ) : (
@@ -313,7 +345,11 @@ export const ApplicationForm: React.FC<FormProps> = ({
                       startIcon={<CloudUploadIcon />}
                       color="info"
                     >
-                      {file ? (file.name.length > 30 ? file.name.slice(0, 27) + "..." : file.name) : "Hujjat yuklash"}
+                      {file
+                        ? file.name.length > 30
+                          ? file.name.slice(0, 27) + "..."
+                          : file.name
+                        : "Hujjat yuklash"}
                       <input
                         type="file"
                         accept=".pdf"
@@ -332,12 +368,18 @@ export const ApplicationForm: React.FC<FormProps> = ({
                       />
                     </FileInputButton>
                     {file && (
-                      <StyledIconButton onClick={() => handleFileDelete(dir.id)}>
+                      <StyledIconButton
+                        onClick={() => handleFileDelete(dir.id)}
+                      >
                         <DeleteIcon />
                       </StyledIconButton>
                     )}
                     {!file && (
-                      <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ ml: 1 }}
+                      >
                         Hujjat ixtiyoriy.
                       </Typography>
                     )}
@@ -352,8 +394,17 @@ export const ApplicationForm: React.FC<FormProps> = ({
       </StyledCard>
 
       <Box display="flex" justifyContent="flex-end" alignItems="center" mt={4}>
-        <StyledButton variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
-          {loading ? <CircularProgress size={24} color="inherit" /> : "Arizani yuborish"}
+        <StyledButton
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? (
+            <CircularProgress size={24} color="inherit" />
+          ) : (
+            "Arizani yuborish"
+          )}
         </StyledButton>
       </Box>
     </Box>

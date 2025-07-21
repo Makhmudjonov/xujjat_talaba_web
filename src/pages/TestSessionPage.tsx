@@ -57,7 +57,9 @@ const TestSessionPage: React.FC = () => {
     ? (location.state as { testId?: number; sessionId?: number })
     : { testId: undefined, sessionId: undefined };
 
-  const [sessionId, setSessionId] = useState<number | null>(initialSessionId || null);
+  const [sessionId, setSessionId] = useState<number | null>(
+    initialSessionId || null
+  );
   const [question, setQuestion] = useState<Question | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -85,14 +87,20 @@ const TestSessionPage: React.FC = () => {
 
     const init = async () => {
       try {
-        console.log("Initializing test session, testId:", testId, "initialSessionId:", initialSessionId);
+        console.log(
+          "Initializing test session, testId:",
+          testId,
+          "initialSessionId:",
+          initialSessionId
+        );
         const savedSession = localStorage.getItem(`testSession_${testId}`);
 
         if (initialSessionId) {
           console.log("Resuming session with sessionId:", initialSessionId);
           await resumeSession(initialSessionId);
         } else if (savedSession) {
-          const { sessionId, remainingSec, currentIndex } = JSON.parse(savedSession);
+          const { sessionId, remainingSec, currentIndex } =
+            JSON.parse(savedSession);
           if (typeof sessionId === "number" && sessionId > 0) {
             console.log("Resuming from localStorage, sessionId:", sessionId);
             setSessionId(sessionId);
@@ -108,7 +116,9 @@ const TestSessionPage: React.FC = () => {
         }
       } catch (e: any) {
         console.error("Init error:", e.message);
-        setError("Testni yuklashda muammo yuz berdi. Iltimos, qaytadan urinib ko‘ring.");
+        setError(
+          "Testni yuklashda muammo yuz berdi. Iltimos, qaytadan urinib ko‘ring."
+        );
         localStorage.removeItem(`testSession_${testId}`);
         setTimeout(() => navigate("/tests", { replace: true }), 3000);
       } finally {
@@ -153,7 +163,10 @@ const TestSessionPage: React.FC = () => {
       } else {
         const err = await res.json();
         setError(err.detail || "Testni yakunlashda muammo yuz berdi.");
-        if (err.detail?.includes("yakunlangan") || err.detail?.includes("No TestSession")) {
+        if (
+          err.detail?.includes("yakunlangan") ||
+          err.detail?.includes("No TestSession")
+        ) {
           localStorage.removeItem(`testSession_${testId}`);
           navigate("/tests", { replace: true });
         }
@@ -211,7 +224,12 @@ const TestSessionPage: React.FC = () => {
         throw new Error("Noto‘g‘ri savol formati");
       }
 
-      console.log("New session started, sessionId:", data.session_id, "question:", data.first_question);
+      console.log(
+        "New session started, sessionId:",
+        data.session_id,
+        "question:",
+        data.first_question
+      );
       setSessionId(data.session_id);
       setQuestion(data.first_question);
       setRemainingSec(data.remaining_seconds);
@@ -220,48 +238,57 @@ const TestSessionPage: React.FC = () => {
       setSelectedOption(null);
     } catch (e: any) {
       console.error("Start new session error:", e.message);
-      setError(e.message || "Testni boshlashda muammo yuz berdi. Iltimos, qaytadan urinib ko‘ring.");
+      setError(
+        e.message ||
+          "Testni boshlashda muammo yuz berdi. Iltimos, qaytadan urinib ko‘ring."
+      );
     } finally {
       setLoading(false);
     }
   }, [testId, navigate]);
 
-  const resumeSession = useCallback(async (sessionId: number) => {
-    try {
-      setLoading(true);
-      console.log("Resuming session, sessionId:", sessionId);
-      const res = await fetchWithAuth(`${API_BASE_URL}/${sessionId}/resume/`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const raw = await res.json();
-      if (res.ok) {
-        const data: ResumeResponse = raw;
-        if (!data.current_question || !data.current_question.options) {
-          console.error("Invalid question format in resume response:", data);
-          throw new Error("Noto‘g‘ri savol formati");
+  const resumeSession = useCallback(
+    async (sessionId: number) => {
+      try {
+        setLoading(true);
+        console.log("Resuming session, sessionId:", sessionId);
+        const res = await fetchWithAuth(
+          `${API_BASE_URL}/${sessionId}/resume/`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const raw = await res.json();
+        if (res.ok) {
+          const data: ResumeResponse = raw;
+          if (!data.current_question || !data.current_question.options) {
+            console.error("Invalid question format in resume response:", data);
+            throw new Error("Noto‘g‘ri savol formati");
+          }
+          console.log("Session resumed, question:", data.current_question);
+          setQuestion(data.current_question);
+          setTotalQuestions(data.total_questions);
+          setRemainingSec(data.remaining_seconds);
+          setCurrentIndex(data.current_index);
+          setSelectedOption(null);
+          setSessionId(sessionId);
+        } else {
+          console.error("Resume session error:", raw);
+          throw new Error(raw.detail || "Sessiyani davom ettirib bo‘lmadi");
         }
-        console.log("Session resumed, question:", data.current_question);
-        setQuestion(data.current_question);
-        setTotalQuestions(data.total_questions);
-        setRemainingSec(data.remaining_seconds);
-        setCurrentIndex(data.current_index);
-        setSelectedOption(null);
-        setSessionId(sessionId);
-      } else {
-        console.error("Resume session error:", raw);
-        throw new Error(raw.detail || "Sessiyani davom ettirib bo‘lmadi");
+      } catch (e: any) {
+        console.error("Resume session error:", e.message);
+        setError(e.message || "Sessiyani davom ettirishda muammo yuz berdi.");
+        localStorage.removeItem(`testSession_${testId}`);
+        navigate("/tests", { replace: true });
+      } finally {
+        setLoading(false);
       }
-    } catch (e: any) {
-      console.error("Resume session error:", e.message);
-      setError(e.message || "Sessiyani davom ettirishda muammo yuz berdi.");
-      localStorage.removeItem(`testSession_${testId}`);
-      navigate("/tests", { replace: true });
-    } finally {
-      setLoading(false);
-    }
-  }, [testId, navigate]);
+    },
+    [testId, navigate]
+  );
 
   const loadNext = useCallback(async () => {
     if (!sessionId) return;
@@ -291,7 +318,10 @@ const TestSessionPage: React.FC = () => {
       } else {
         console.error("Load next question error:", raw);
         setError(raw.detail || "Keyingi savolni olishda xato");
-        if (raw.detail?.includes("yakunlangan") || raw.detail?.includes("No TestSession")) {
+        if (
+          raw.detail?.includes("yakunlangan") ||
+          raw.detail?.includes("No TestSession")
+        ) {
           localStorage.removeItem(`testSession_${testId}`);
           finishTest();
         }
@@ -308,7 +338,12 @@ const TestSessionPage: React.FC = () => {
     if (!sessionId || !question || selectedOption === null) return;
     try {
       setLoading(true);
-      console.log("Submitting answer, questionId:", question.id, "selectedOption:", selectedOption);
+      console.log(
+        "Submitting answer, questionId:",
+        question.id,
+        "selectedOption:",
+        selectedOption
+      );
       const res = await fetchWithAuth(`${API_BASE_URL}/${sessionId}/answer/`, {
         method: "POST",
         headers: {
@@ -326,7 +361,10 @@ const TestSessionPage: React.FC = () => {
       } else {
         console.error("Submit answer error:", raw);
         setError(raw.detail || "Javobni yuborishda xato");
-        if (raw.detail?.includes("yakunlangan") || raw.detail?.includes("No TestSession")) {
+        if (
+          raw.detail?.includes("yakunlangan") ||
+          raw.detail?.includes("No TestSession")
+        ) {
           localStorage.removeItem(`testSession_${testId}`);
           finishTest();
         }
@@ -340,12 +378,19 @@ const TestSessionPage: React.FC = () => {
   }, [sessionId, question, selectedOption, testId, loadNext, finishTest]);
 
   const fmt = (s: number) =>
-    `${Math.floor(s / 60).toString().padStart(2, "0")}:${(s % 60).toString().padStart(2, "0")}`;
+    `${Math.floor(s / 60)
+      .toString()
+      .padStart(2, "0")}:${(s % 60).toString().padStart(2, "0")}`;
 
   if (loading) {
     return (
       <Container maxWidth="sm" sx={{ mt: 4 }}>
-        <Box display="flex" flexDirection="column" alignItems="center" minHeight="60vh">
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          minHeight="60vh"
+        >
           <CircularProgress />
           <Typography mt={2}>
             Test yuklanmoqda... (Savol: {currentIndex}/{totalQuestions})
@@ -378,7 +423,10 @@ const TestSessionPage: React.FC = () => {
           <Typography variant="h6" fontWeight={600}>
             Savol: {currentIndex} / {totalQuestions}
           </Typography>
-          <Typography variant="h6" color={remainingSec < 60 ? "error" : "text.primary"}>
+          <Typography
+            variant="h6"
+            color={remainingSec < 60 ? "error" : "text.primary"}
+          >
             {fmt(remainingSec)}
           </Typography>
         </Box>
@@ -404,7 +452,11 @@ const TestSessionPage: React.FC = () => {
             </RadioGroup>
 
             <Box mt={3} display="flex" justifyContent="flex-end" gap={2}>
-              <Button variant="outlined" color="secondary" onClick={() => setConfirmOpen(true)}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => setConfirmOpen(true)}
+              >
                 Yakunlash
               </Button>
               <Button
@@ -425,7 +477,8 @@ const TestSessionPage: React.FC = () => {
         <DialogTitle>Testni yakunlash</DialogTitle>
         <DialogContent>
           <Typography>
-            Testni yakunlamoqchimisiz? Yakunlaganingizdan so‘ng qayta davom ettira olmaysiz.
+            Testni yakunlamoqchimisiz? Yakunlaganingizdan so‘ng qayta davom
+            ettira olmaysiz.
           </Typography>
         </DialogContent>
         <DialogActions>

@@ -46,7 +46,9 @@ const TestsPage: React.FC = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const [selectedTestId, setSelectedTestId] = useState<number | null>(null);
-  const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
+  const [selectedSessionId, setSelectedSessionId] = useState<number | null>(
+    null
+  );
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [result, setResult] = useState<any | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -57,7 +59,9 @@ const TestsPage: React.FC = () => {
         const res = await fetchWithAuth("https://tanlov.medsfera.uz/api/tests/");
         if (!res.ok) {
           const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.detail || "Testlarni yuklashda xatolik yuz berdi");
+          throw new Error(
+            errData.detail || "Testlarni yuklashda xatolik yuz berdi"
+          );
         }
         const data: Test[] = await res.json();
         setTests(data);
@@ -106,7 +110,12 @@ const TestsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="60vh"
+      >
         <CircularProgress color="primary" />
       </Box>
     );
@@ -155,14 +164,18 @@ const TestsPage: React.FC = () => {
                   <TableCell>{test.question_count}</TableCell>
                   <TableCell>{test.time_limit}</TableCell>
                   <TableCell>
-                    {test.status === "ishlangan" ? "✅ Ishlangan" : test.status === "ishlanmoqda" ? "⏳ Ishlanmoqda" : "⌛ Ishlanmagan"}
+                    {test.status === "ishlangan"
+                      ? "✅ Ishlangan"
+                      : test.status === "ishlanmoqda"
+                      ? "⏳ Ishlanmoqda"
+                      : "⌛ Ishlanmagan"}
                   </TableCell>
                   <TableCell>
                     {test.status === "ishlangan" && test.result ? (
                       <>
                         <strong>{test.result.correct ?? 0}</strong> /{" "}
-                        {test.result.total ?? 0} (
-                        {test.result.score ?? 0}% to‘g‘ri)
+                        {test.result.total ?? 0} ({test.result.score ?? 0}%
+                        to‘g‘ri)
                       </>
                     ) : (
                       "—"
@@ -192,7 +205,9 @@ const TestsPage: React.FC = () => {
                         variant="contained"
                         size="small"
                         color="warning"
-                        onClick={() => handleStartClick(test.id, test.session_id)}
+                        onClick={() =>
+                          handleStartClick(test.id, test.session_id)
+                        }
                       >
                         Davom etish
                       </Button>
@@ -213,7 +228,9 @@ const TestsPage: React.FC = () => {
         </TableContainer>
 
         <Dialog open={confirmOpen} onClose={handleCancel}>
-          <DialogTitle>{selectedSessionId ? "Testni davom ettirish" : "Testni boshlash"}</DialogTitle>
+          <DialogTitle>
+            {selectedSessionId ? "Testni davom ettirish" : "Testni boshlash"}
+          </DialogTitle>
           <DialogContent>
             <Typography>
               {selectedSessionId
@@ -225,7 +242,11 @@ const TestsPage: React.FC = () => {
             <Button onClick={handleCancel} color="secondary">
               Bekor qilish
             </Button>
-            <Button onClick={handleConfirmStart} color="primary" variant="contained">
+            <Button
+              onClick={handleConfirmStart}
+              color="primary"
+              variant="contained"
+            >
               {selectedSessionId ? "Davom etish" : "Boshlash"}
             </Button>
           </DialogActions>

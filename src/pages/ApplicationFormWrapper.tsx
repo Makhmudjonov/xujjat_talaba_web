@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CircularProgress, Container, Alert } from "@mui/material";
 import { fetchWithAuth } from "../utils/fetchWithAuth";
-import ApplicationForm from "./forms"
+import ApplicationForm from "./forms";
 
 const ApplicationFormWrapper = () => {
   const { applicationTypeId } = useParams();

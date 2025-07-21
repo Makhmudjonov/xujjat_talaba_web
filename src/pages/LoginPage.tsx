@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   TextField,
@@ -10,65 +10,70 @@ import {
   Paper,
   useTheme,
   MenuItem, // Added for select dropdown
-} from '@mui/material';
-import { fetchWithAuth } from '../utils/fetchWithAuth'; // Assuming this utility is still needed
-import FloatingBanner from '../components/FloatingBanner';
+} from "@mui/material";
+import { fetchWithAuth } from "../utils/fetchWithAuth"; // Assuming this utility is still needed
+import FloatingBanner from "../components/FloatingBanner";
 
 const LoginPage = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [university, setUniversity] = useState(''); // New state for university
-  const [error, setError] = useState('');
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [university, setUniversity] = useState(""); // New state for university
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); // Add loading state for button
   const navigate = useNavigate();
   const theme = useTheme(); // Access the theme
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true); // Set loading to true when login starts
 
     try {
-      const response = await fetchWithAuth('https://tanlov.medsfera.uz/api/students/login/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ login, password, university}), // Include university in request
-      });
+      const response = await fetchWithAuth(
+        "https://tanlov.medsfera.uz/api/students/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ login, password, university }), // Include university in request
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
 
         // 🔐 Token va foydalanuvchi ma'lumotlarini saqlaymiz
-        localStorage.setItem('accessToken', data.token.access);
-        localStorage.setItem('refreshToken', data.token.refresh);
-        localStorage.setItem('studentId', data.student_id.toString());
-        localStorage.setItem('fullName', data.full_name);
-        localStorage.setItem('role', data.role);
+        localStorage.setItem("accessToken", data.token.access);
+        localStorage.setItem("refreshToken", data.token.refresh);
+        localStorage.setItem("studentId", data.student_id.toString());
+        localStorage.setItem("fullName", data.full_name);
+        localStorage.setItem("role", data.role);
 
         // 🧭 Rol asosida yo‘naltiramiz
         switch (data.role) {
-          case 'admin':
-          case 'dekan':
-          case 'kichik_admin':
-            navigate('/admin');
+          case "admin":
+          case "dekan":
+          case "kichik_admin":
+            navigate("/admin");
             break;
-          case 'student':
-            navigate('/account');
+          case "student":
+            navigate("/account");
             break;
           default:
             // Handle unexpected roles, maybe navigate to a default landing page or show an error
-            setError('Noma’lum foydalanuvchi roli.');
+            setError("Noma’lum foydalanuvchi roli.");
             localStorage.clear(); // Clear invalid credentials
         }
       } else {
         const errorData = await response.json();
-        setError(errorData.detail || 'Foydalanuvchi nomi yoki parol xato.'); // Display specific error from backend
+        setError(errorData.detail || "Foydalanuvchi nomi yoki parol xato."); // Display specific error from backend
       }
     } catch (err) {
-      console.error('Login API call error:', err); // Log the actual error for debugging
-      setError('❌ Server bilan bog‘lanishda xatolik. Iltimos, keyinroq urinib ko‘ring.');
+      console.error("Login API call error:", err); // Log the actual error for debugging
+      setError(
+        "❌ Server bilan bog‘lanishda xatolik. Iltimos, keyinroq urinib ko‘ring."
+      );
     } finally {
       setLoading(false); // Reset loading state
     }
@@ -79,11 +84,11 @@ const LoginPage = () => {
       component="main"
       maxWidth="xs"
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
         backgroundColor: theme.palette.background.default,
         p: theme.spacing(3),
       }}
@@ -93,23 +98,31 @@ const LoginPage = () => {
         elevation={6}
         sx={{
           padding: theme.spacing(4),
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100%',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
         }}
       >
-        <Typography variant="h5" component="h2" sx={{ mb: theme.spacing(3), fontWeight: 600, color: theme.palette.primary.main }}>
+        <Typography
+          variant="h5"
+          component="h2"
+          sx={{
+            mb: theme.spacing(3),
+            fontWeight: 600,
+            color: theme.palette.primary.main,
+          }}
+        >
           🔐 Tizimga kirish
         </Typography>
 
         {error && (
-          <Alert severity="error" sx={{ width: '100%', mb: theme.spacing(2) }}>
+          <Alert severity="error" sx={{ width: "100%", mb: theme.spacing(2) }}>
             {error}
           </Alert>
         )}
 
-        <Box component="form" onSubmit={handleLogin} sx={{ width: '100%' }}>
+        <Box component="form" onSubmit={handleLogin} sx={{ width: "100%" }}>
           {/* Universitet tanlash */}
           <TextField
             select
@@ -164,10 +177,10 @@ const LoginPage = () => {
             disabled={loading}
             sx={{
               py: theme.spacing(1.5),
-              fontSize: '1rem',
+              fontSize: "1rem",
             }}
           >
-            {loading ? 'Kirilmoqda...' : 'Kirish'}
+            {loading ? "Kirilmoqda..." : "Kirish"}
           </Button>
         </Box>
       </Paper>

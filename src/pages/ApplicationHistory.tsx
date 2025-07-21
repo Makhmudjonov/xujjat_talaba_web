@@ -31,7 +31,9 @@ const ApplicationHistory: React.FC = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const res = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/application-items/");
+      const res = await fetchWithAuth(
+        "https://tanlov.medsfera.uz/api/student/application-items/"
+      );
       if (!res.ok) throw new Error("Xatolik yuz berdi");
       const data = await res.json();
       const fetchedItems = data.results || data;
@@ -49,23 +51,41 @@ const ApplicationHistory: React.FC = () => {
 
   return (
     <Container maxWidth="md" sx={{ py: 6 }}>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, textAlign: "center", mb: 4 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: 700, textAlign: "center", mb: 4 }}
+        >
           Mening Arizalarim Tarixi
         </Typography>
 
         {loading ? (
-          <Box display="flex" justifyContent="center" alignItems="center" mt={8}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mt={8}
+          >
             <CircularProgress size={40} />
           </Box>
         ) : items.length === 0 ? (
           <Box textAlign="center" mt={8}>
-            <Typography variant="h6">Sizda hozircha arizalar mavjud emas.</Typography>
+            <Typography variant="h6">
+              Sizda hozircha arizalar mavjud emas.
+            </Typography>
           </Box>
         ) : (
           <Box display="flex" flexDirection="column" gap={3}>
             {items.map((item) => (
-              <SubmittedApplicationCard key={item.id} item={item} onUpdated={loadData} />
+              <SubmittedApplicationCard
+                key={item.id}
+                item={item}
+                onUpdated={loadData}
+              />
             ))}
           </Box>
         )}

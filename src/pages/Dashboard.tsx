@@ -24,7 +24,8 @@ import { styled } from "@mui/material/styles";
 import { fetchWithAuth } from "../utils/fetchWithAuth";
 
 // Define type for styled components to ensure JSX compatibility
-type StyledComponentProps<T extends React.JSXElementConstructor<any>> = React.ComponentProps<T>;
+type StyledComponentProps<T extends React.JSXElementConstructor<any>> =
+  React.ComponentProps<T>;
 
 // Enhanced styled components with glassmorphism
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -97,10 +98,12 @@ const ListItemBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: theme.spacing(1.2),
   borderRadius: "8px",
-  background: "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(240,240,245,0.95))",
+  background:
+    "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(240,240,245,0.95))",
   transition: "background 0.3s, transform 0.3s",
   "&:hover": {
-    background: "linear-gradient(145deg, rgba(255,255,255,1), rgba(230,240,255,1))",
+    background:
+      "linear-gradient(145deg, rgba(255,255,255,1), rgba(230,240,255,1))",
     transform: "scale(1.03)",
   },
   boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
@@ -120,17 +123,17 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  fetchWithAuth("https://tanlov.medsfera.uz/api/stats/")
-    .then((res) => res.json())
-    .then((data) => {
-      setData(data);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Failed to load stats:", err);
-      setLoading(false);
-    });
-}, []);
+    fetchWithAuth("https://tanlov.medsfera.uz/api/stats/")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load stats:", err);
+        setLoading(false);
+      });
+  }, []);
 
   if (loading || !data) {
     return (
@@ -147,7 +150,8 @@ const Dashboard = () => {
             content: '""',
             position: "absolute",
             inset: 0,
-            background: "radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
             zIndex: 0,
           },
         }}
@@ -155,7 +159,10 @@ const Dashboard = () => {
         <CircularProgress
           size={70}
           thickness={5}
-          sx={{ color: "primary.main", animation: "pulse 1.5s ease-in-out infinite" }}
+          sx={{
+            color: "primary.main",
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}
         />
       </Box>
     );
@@ -172,7 +179,8 @@ const Dashboard = () => {
           content: '""',
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
           zIndex: 0,
         },
         "&:after": {
@@ -182,7 +190,8 @@ const Dashboard = () => {
           left: 0,
           right: 0,
           height: "180px",
-          background: "linear-gradient(180deg, rgba(99, 102, 241, 0.2), transparent)",
+          background:
+            "linear-gradient(180deg, rgba(99, 102, 241, 0.2), transparent)",
           zIndex: 0,
         },
       }}
@@ -255,7 +264,9 @@ const Dashboard = () => {
           <StyledCard>
             <StyledCardContent>
               <StatTypography>Test o‘rtacha</StatTypography>
-              <ValueTypography>{data.application_items.avg_test_result}</ValueTypography>
+              <ValueTypography>
+                {data.application_items.avg_test_result}
+              </ValueTypography>
             </StyledCardContent>
           </StyledCard>
         </Grid>
@@ -265,9 +276,11 @@ const Dashboard = () => {
             <StyledCardContent>
               <StatTypography>Eng ko‘p ariza turi</StatTypography>
               <ValueTypography>
-                {data.application_types.reduce((a: any, b: any) =>
-                  a.count > b.count ? a : b
-                ).application_type__name}
+                {
+                  data.application_types.reduce((a: any, b: any) =>
+                    a.count > b.count ? a : b
+                  ).application_type__name
+                }
               </ValueTypography>
             </StyledCardContent>
           </StyledCard>
@@ -296,12 +309,14 @@ const Dashboard = () => {
                     style={{ fontSize: "12px", fontWeight: 500 }}
                     animationDuration={800}
                   >
-                    {data.students.by_gender.map((entry: any, index: number) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
+                    {data.students.by_gender.map(
+                      (entry: any, index: number) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      )
+                    )}
                   </Pie>
                   <Tooltip
                     contentStyle={{
@@ -475,14 +490,12 @@ const Dashboard = () => {
           </StyledCard>
         </Grid>
 
-        
-
         {/* --- Universitet ro‘yxati --- */}
         <Grid item xs={12}>
           <StyledCard>
             <StyledCardContent>
               <SubTitleTypography variant="h6">
-                Ariza topshirish uchun ro'yxatdan o'tgan talabalar soni 
+                Ariza topshirish uchun ro'yxatdan o'tgan talabalar soni
               </SubTitleTypography>
               <Box display="flex" flexDirection="column" gap={1.2}>
                 {data.students.by_university.map((u: any, i: number) => (

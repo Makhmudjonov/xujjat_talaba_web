@@ -18,12 +18,11 @@ import {
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkspacesIcon from "@mui/icons-material/Workspaces";
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance'; // New icon for university grant
-import StarIcon from '@mui/icons-material/Star'; // New icon for full grant
-import GradeIcon from '@mui/icons-material/Grade'; // New icon for partial grant
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance"; // New icon for university grant
+import StarIcon from "@mui/icons-material/Star"; // New icon for full grant
+import GradeIcon from "@mui/icons-material/Grade"; // New icon for partial grant
 import { fetchWithAuth } from "../utils/fetchWithAuth"; // to‘g‘ri path yozing
 import { METHODS } from "http";
-
 
 const API = "https://tanlov.medsfera.uz/api/student/application-types/";
 
@@ -44,15 +43,15 @@ interface ApplicationType {
 const ApplicationChoicePage: React.FC = () => {
   const [types, setTypes] = useState<ApplicationType[]>([]);
   console.log(types);
-  
+
   const [loading, setLoading] = useState(true);
   const [gpa, setGpa] = useState<number | null>(null);
   const [level, setLevel] = useState<string | null>(null);
-  const [selectedApplicationId, setSelectedApplicationId] = useState<number | null>(null); // State to track selected card
+  const [selectedApplicationId, setSelectedApplicationId] = useState<
+    number | null
+  >(null); // State to track selected card
   const [checked, setChecked] = useState<boolean>(false);
   console.log(checked);
-  
-  
 
   const navigate = useNavigate();
   const theme = useTheme(); // Access the theme for consistent styling
@@ -69,7 +68,9 @@ const ApplicationChoicePage: React.FC = () => {
 
         if (!res.ok) {
           const errorData = await res.json();
-          throw new Error(errorData.detail || "Ariza turlarini yuklashda xatolik yuz berdi.");
+          throw new Error(
+            errorData.detail || "Ariza turlarini yuklashda xatolik yuz berdi."
+          );
         }
 
         const data: ApplicationType[] = await res.json();
@@ -86,16 +87,26 @@ const ApplicationChoicePage: React.FC = () => {
               icon = <StarIcon sx={{ fontSize: iconSize, color: iconColor }} />;
               break;
             case "toliq_bolmagan_grant":
-              icon = <GradeIcon sx={{ fontSize: iconSize, color: iconColor }} />;
+              icon = (
+                <GradeIcon sx={{ fontSize: iconSize, color: iconColor }} />
+              );
               break;
             case "qoshimcha_davlat_granti":
-              icon = <WorkspacesIcon sx={{ fontSize: iconSize, color: iconColor }} />;
+              icon = (
+                <WorkspacesIcon sx={{ fontSize: iconSize, color: iconColor }} />
+              );
               break;
             case "oliy_talim_tashkiloti_granti":
-              icon = <AccountBalanceIcon sx={{ fontSize: iconSize, color: iconColor }} />;
+              icon = (
+                <AccountBalanceIcon
+                  sx={{ fontSize: iconSize, color: iconColor }}
+                />
+              );
               break;
             default:
-              icon = <SchoolIcon sx={{ fontSize: iconSize, color: iconColor }} />;
+              icon = (
+                <SchoolIcon sx={{ fontSize: iconSize, color: iconColor }} />
+              );
           }
           return { ...item, icon };
         });
@@ -124,17 +135,18 @@ const ApplicationChoicePage: React.FC = () => {
   const handleSelect = (id: number) => {
     setSelectedApplicationId(id);
   };
-  
+
   async function handleChangeToifa() {
-    const res = await fetchWithAuth(`https://tanlov.medsfera.uz/api/students/update-toifa/`,{
-      method: "PATCH",
-    })
-    if(res.ok){
-      window.location.reload()
+    const res = await fetchWithAuth(
+      `https://tanlov.medsfera.uz/api/students/update-toifa/`,
+      {
+        method: "PATCH",
+      }
+    );
+    if (res.ok) {
+      window.location.reload();
     }
-    
   }
-  
 
   const handleContinue = () => {
     if (selectedApplicationId !== null) {
@@ -144,7 +156,12 @@ const ApplicationChoicePage: React.FC = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="60vh"
+      >
         <CircularProgress size={60} color="primary" />
         <Typography variant="h6" color="text.secondary" ml={2}>
           Ma'lumotlar yuklanmoqda...
@@ -155,19 +172,46 @@ const ApplicationChoicePage: React.FC = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: theme.spacing(4) }}>
-      <Typography variant="h4" fontWeight={700} align="center" sx={{ mt: 2, mb: 1, color: theme.palette.primary.dark }}>
+      <Typography
+        variant="h4"
+        fontWeight={700}
+        align="center"
+        sx={{ mt: 2, mb: 1, color: theme.palette.primary.dark }}
+      >
         Ariza turini tanlang
       </Typography>
-
       {gpa !== null && (
-        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 1 }}>
-          Sizning GPA ballingiz: <Typography component="span" fontWeight={700} color={theme.palette.info.main}>{gpa}</Typography>
+        <Typography
+          variant="body1"
+          align="center"
+          color="text.secondary"
+          sx={{ mb: 1 }}
+        >
+          Sizning GPA ballingiz:{" "}
+          <Typography
+            component="span"
+            fontWeight={700}
+            color={theme.palette.info.main}
+          >
+            {gpa}
+          </Typography>
         </Typography>
       )}
-
       {level && (
-        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: theme.spacing(4) }}>
-          Sizning kursingiz: <Typography component="span" fontWeight={700} color={theme.palette.info.main}>{level}</Typography>
+        <Typography
+          variant="body1"
+          align="center"
+          color="text.secondary"
+          sx={{ mb: theme.spacing(4) }}
+        >
+          Sizning kursingiz:{" "}
+          <Typography
+            component="span"
+            fontWeight={700}
+            color={theme.palette.info.main}
+          >
+            {level}
+          </Typography>
         </Typography>
       )}
       <Box display="flex" justifyContent="center" mb={theme.spacing(4)}>
@@ -178,7 +222,7 @@ const ApplicationChoicePage: React.FC = () => {
               onChange={handleChangeToifa}
               sx={{
                 color: theme.palette.grey[500],
-                '&.Mui-checked': {
+                "&.Mui-checked": {
                   color: theme.palette.info.main,
                 },
               }}
@@ -186,19 +230,16 @@ const ApplicationChoicePage: React.FC = () => {
           }
           label={
             <Typography variant="body1" color="red" fontWeight={500}>
-                Siz ijtimoiy himoya reestrida turasizmi
+              Siz ijtimoiy himoya reestrida turasizmi
             </Typography>
           }
         />
       </Box>
-
-
-
-      
-
       <Grid container spacing={theme.spacing(3)} justifyContent="center">
         {types.map((opt) => (
-          <Grid item xs={12} sm={6} md={4} key={opt.id}> {/* Use 'item' prop for Grid children */}
+          <Grid item xs={12} sm={6} md={4} key={opt.id}>
+            {" "}
+            {/* Use 'item' prop for Grid children */}
             <Card
               component={CardActionArea}
               onClick={() => opt.can_apply && handleSelect(opt.id)} // Only allow selection if can_apply is true
@@ -210,33 +251,60 @@ const ApplicationChoicePage: React.FC = () => {
                 textAlign: "center",
                 // borderRadius: theme.shape.borderRadius * 2, // More rounded corners
                 boxShadow: theme.shadows[1], // Soft initial shadow
-                transition: "transform 0.25s, box-shadow 0.25s, background-color 0.25s",
+                transition:
+                  "transform 0.25s, box-shadow 0.25s, background-color 0.25s",
                 "&:hover": {
                   transform: opt.can_apply ? "translateY(-4px)" : "none", // Only lift on hover if can_apply
-                  boxShadow: opt.can_apply ? theme.shadows[4] : theme.shadows[1], // Stronger shadow on hover if can_apply
+                  boxShadow: opt.can_apply
+                    ? theme.shadows[4]
+                    : theme.shadows[1], // Stronger shadow on hover if can_apply
                 },
                 opacity: opt.can_apply ? 1 : 0.6, // Dim disabled cards more clearly
                 cursor: opt.can_apply ? "pointer" : "not-allowed", // Change cursor for disabled cards
-                border: selectedApplicationId === opt.id ? `2px solid ${theme.palette.primary.main}` : `1px solid ${theme.palette.divider}`, // Highlight selected card
-                backgroundColor: selectedApplicationId === opt.id ? theme.palette.action.selected : theme.palette.background.paper, // Subtle background for selected
+                border:
+                  selectedApplicationId === opt.id
+                    ? `2px solid ${theme.palette.primary.main}`
+                    : `1px solid ${theme.palette.divider}`, // Highlight selected card
+                backgroundColor:
+                  selectedApplicationId === opt.id
+                    ? theme.palette.action.selected
+                    : theme.palette.background.paper, // Subtle background for selected
               }}
             >
               <Box sx={{ mb: theme.spacing(2) }}>{opt.icon}</Box>
-              <CardContent sx={{ pt: 1, pb: 0 }}> {/* Adjust padding for content */}
-                <Typography variant="h6" fontWeight={600} gutterBottom color="text.primary">
+              <CardContent sx={{ pt: 1, pb: 0 }}>
+                {" "}
+                {/* Adjust padding for content */}
+                <Typography
+                  variant="h6"
+                  fontWeight={600}
+                  gutterBottom
+                  color="text.primary"
+                >
                   {opt.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ minHeight: theme.spacing(4) }}> {/* Add minHeight for consistent card size */}
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ minHeight: theme.spacing(4) }}
+                >
+                  {" "}
+                  {/* Add minHeight for consistent card size */}
                   {opt.subtitle}
                 </Typography>
                 <Divider sx={{ my: theme.spacing(2) }} />
                 {opt.allowed_levels && opt.allowed_levels.length > 0 && (
                   <Typography variant="caption" color="text.secondary">
-                    Ruxsat etilgan kurslar: <strong>{opt.allowed_levels.join(", ")}</strong>
+                    Ruxsat etilgan kurslar:{" "}
+                    <strong>{opt.allowed_levels.join(", ")}</strong>
                   </Typography>
                 )}
                 {!opt.can_apply && opt.reason && (
-                  <Typography variant="body2" color="error" sx={{ mt: theme.spacing(1), fontWeight: 500 }}>
+                  <Typography
+                    variant="body2"
+                    color="error"
+                    sx={{ mt: theme.spacing(1), fontWeight: 500 }}
+                  >
                     {opt.reason}
                   </Typography>
                 )}
@@ -245,9 +313,7 @@ const ApplicationChoicePage: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-
       ---
-
       <Box textAlign="center" mt={theme.spacing(5)} mb={theme.spacing(2)}>
         <Button
           variant="contained"
@@ -271,7 +337,12 @@ const ApplicationChoicePage: React.FC = () => {
         >
           Davom etish
         </Button>
-        <Typography variant="caption" display="block" color="text.secondary" mt={theme.spacing(1)}>
+        <Typography
+          variant="caption"
+          display="block"
+          color="text.secondary"
+          mt={theme.spacing(1)}
+        >
           (Davom etish tugmasi ariza turini tanlaganingizdan so‘ng faol bo‘ladi)
         </Typography>
       </Box>

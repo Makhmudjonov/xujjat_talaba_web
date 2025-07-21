@@ -59,17 +59,34 @@ interface ApplicationStatus {
   submitted_at: string;
 }
 
+interface ApplicationFile {
+  id: number;
+  file_url: string;
+  comment: string;
+  application_title: string;
+}
+
+interface Score {
+  id: number;
+  value: number;
+  note: string;
+  scored_at: string;
+}
+
 interface ApplicationItem {
   id: number;
   application: number;
+  application_type_name: string;
+  direction: number;
+  direction_name: string;
   title: string;
   student_comment: string;
   reviewer_comment: string | null;
-  direction: number;
-  direction_name: string;
-  submitted_at: string;
-  score: ScoreObj | null;
-  reviewed_at: string | null;
+  gpa: number | null;
+  test_result: number | null;
+  files: ApplicationFile[];
+  status: boolean;
+  score: Score | null;
 }
 
 interface ScoreObj {
@@ -98,7 +115,9 @@ const PRIMARY_BLUE = "#253B80";
 // Custom styled Box for information items
 const StyledInfoItem = styled(Box)(({ theme }) => ({
   backgroundColor:
-    theme.palette.mode === "light" ? theme.palette.grey[50] : theme.palette.grey[800],
+    theme.palette.mode === "light"
+      ? theme.palette.grey[50]
+      : theme.palette.grey[800],
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   padding: theme.spacing(2),
   height: "100%",
@@ -111,12 +130,19 @@ const StyledInfoItem = styled(Box)(({ theme }) => ({
 }));
 
 // InfoItem component
-const InfoItem: React.FC<{ label: string; value: string }> = ({ label, value }) => (
+const InfoItem: React.FC<{ label: string; value: string }> = ({
+  label,
+  value,
+}) => (
   <StyledInfoItem>
     <Typography variant="caption" color="text.secondary" fontWeight={600}>
       {label}
     </Typography>
-    <Typography variant="body2" fontWeight={500} sx={{ wordBreak: "break-word" }}>
+    <Typography
+      variant="body2"
+      fontWeight={500}
+      sx={{ wordBreak: "break-word" }}
+    >
       {value}
     </Typography>
   </StyledInfoItem>
@@ -124,9 +150,18 @@ const InfoItem: React.FC<{ label: string; value: string }> = ({ label, value }) 
 
 // Custom Step Icon for the Stepper
 const StepIconRoot = styled("div")<{
-  ownerState: { active?: boolean; completed?: boolean; status?: string; stepIndex: number; currentStatusIndex: number };
+  ownerState: {
+    active?: boolean;
+    completed?: boolean;
+    status?: string;
+    stepIndex: number;
+    currentStatusIndex: number;
+  };
 }>(({ theme, ownerState }) => ({
-  color: theme.palette.mode === "light" ? theme.palette.grey[400] : theme.palette.grey[600], // Default faded grey
+  color:
+    theme.palette.mode === "light"
+      ? theme.palette.grey[400]
+      : theme.palette.grey[600], // Default faded grey
   display: "flex",
   height: 22,
   alignItems: "center",
@@ -138,9 +173,10 @@ const StepIconRoot = styled("div")<{
     color: PRIMARY_BLUE, // Active step is primary blue
   }),
   // Specific color for 'rejected' status, overriding others if it's the current status step
-  ...(ownerState.status === 'rejected' && ownerState.stepIndex === ownerState.currentStatusIndex && {
-    color: theme.palette.error.main, // Red for the rejected step if it's the current status
-  }),
+  ...(ownerState.status === "rejected" &&
+    ownerState.stepIndex === ownerState.currentStatusIndex && {
+      color: theme.palette.error.main, // Red for the rejected step if it's the current status
+    }),
   // Icons styling
   "& .MuiSvgIcon-root": {
     zIndex: 1,
@@ -179,27 +215,36 @@ function CustomStepIcon(props: {
   // Custom logic for icon rendering based on status
   if (completed) {
     iconToRender = <CheckCircleOutlineIcon />;
-  } else if (stepIndex === currentStatusIndex && status === 'rejected') {
+  } else if (stepIndex === currentStatusIndex && status === "rejected") {
     iconToRender = <RemoveCircleOutlineIcon />;
   } else if (stepIndex === currentStatusIndex) {
     // Current step
-    if (status === 'pending') iconToRender = <HourglassEmptyIcon />;
-    else if (status === 'reviewed') iconToRender = <AssignmentTurnedInIcon />;
-    else if (status === 'accepted') iconToRender = <CheckCircleOutlineIcon />; // Should be completed, but for robustness
+    if (status === "pending") iconToRender = <HourglassEmptyIcon />;
+    else if (status === "reviewed") iconToRender = <AssignmentTurnedInIcon />;
+    else if (status === "accepted") iconToRender = <CheckCircleOutlineIcon />; // Should be completed, but for robustness
   }
 
   return (
-    <StepIconRoot ownerState={{ active, completed, status: status, stepIndex: stepIndex, currentStatusIndex: currentStatusIndex }}>
+    <StepIconRoot
+      ownerState={{
+        active,
+        completed,
+        status: status,
+        stepIndex: stepIndex,
+        currentStatusIndex: currentStatusIndex,
+      }}
+    >
       {iconToRender}
     </StepIconRoot>
   );
 }
 
-
 const AccountPage: React.FC = () => {
   const [student, setStudent] = useState<Student | null>(null);
   const [applications, setApplications] = useState<ApplicationStatus[]>([]);
-  const [applicationItems, setApplicationItems] = useState<ApplicationItem[]>([]);
+  const [applicationItems, setApplicationItems] = useState<ApplicationItem[]>(
+    []
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const theme = useTheme();
@@ -260,36 +305,74 @@ const AccountPage: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      if (!token) {
-        setError("Tizimga kirilmagan. Iltimos, qayta kiring.");
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        if (!token) {
+          setError("Tizimga kirilmagan. Iltimos, qayta kiring.");
+          setLoading(false);
+          return;
+        }
+
+        // Fetch student info (base64 coded)
+        const resStu = await fetchWithAuth(
+          "https://tanlov.medsfera.uz/api/student/account/"
+        );
+        if (!resStu.ok) {
+          const errorData = await resStu.json();
+          throw new Error(
+            errorData.detail ||
+              "Talaba ma'lumotlarini olishda xatolik yuz berdi."
+          );
+        }
+
+        // Fetch applications data
+        // const resApp = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/applications/");
+        // if (!resApp.ok) {
+        //   if (resApp.status !== 404) {
+        //     const errorData = await resApp.json();
+        //     console.error("Failed to fetch applications:", errorData);
+        //   }
+        //   setApplications([]);
+        // } else {
+        //   const apps: ApplicationStatus[] = await resApp.json();
+        //   setApplications(apps);
+        // }
+
+        // Fetch application items data
+        const loadApplicationItems = async () => {
+          try {
+            const resItems = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/application-items/");
+            if (!resItems.ok) {
+              if (resItems.status !== 404) {
+                const errorData = await resItems.json();
+                console.error("Failed to fetch application items:", errorData);
+              }
+              setApplicationItems([]);
+            } else {
+              const items: ApplicationItem[] = await resItems.json();
+              setApplicationItems(items); // score, files, gpa, test_result va boshqalar shu object ichida
+            }
+          } catch (error) {
+            console.error("Server error while fetching application items:", error);
+            setApplicationItems([]);
+          }
+        };
+      
+        loadApplicationItems();
+
+        const encoded = await resStu.json(); // { data: "base64_string" }
+        const decodedStudent: Student = JSON.parse(atob(encoded.data));
+        setStudent(decodedStudent);
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
         setLoading(false);
-        return;
       }
+    };
 
-      // Fetch student info (base64 coded)
-      const resStu = await fetchWithAuth("https://tanlov.medsfera.uz/api/student/account/");
-      if (!resStu.ok) {
-        const errorData = await resStu.json();
-        throw new Error(errorData.detail || "Talaba ma'lumotlarini olishda xatolik yuz berdi.");
-      }
-
-      const encoded = await resStu.json(); // { data: "base64_string" }
-      const decodedStudent: Student = JSON.parse(atob(encoded.data));
-      setStudent(decodedStudent);
-
-    } catch (err) {
-      setError((err as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchData();
-}, []);
-
+    fetchData();
+  }, []);
 
   // Determine custom icon for Stepper
   const getStepIcon = (status: string) => {
@@ -300,7 +383,12 @@ const AccountPage: React.FC = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
         <CircularProgress size={60} sx={{ color: PRIMARY_BLUE }} />
         <Typography variant="h6" color="text.secondary" ml={2}>
           Ma'lumotlar yuklanmoqda...
@@ -311,13 +399,20 @@ const AccountPage: React.FC = () => {
 
   if (error) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
         <Alert severity="error" sx={{ px: 4, py: 2, borderRadius: 2 }}>
           <Typography variant="h6" color="error">
             Xatolik!
           </Typography>
           <Typography>{error}</Typography>
-          <Typography mt={1}>Sahifani yangilab ko'ring yoki keyinroq urinib ko'ring.</Typography>
+          <Typography mt={1}>
+            Sahifani yangilab ko'ring yoki keyinroq urinib ko'ring.
+          </Typography>
         </Alert>
       </Box>
     );
@@ -325,11 +420,17 @@ const AccountPage: React.FC = () => {
 
   if (!student) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
         <Alert severity="info" sx={{ px: 4, py: 2, borderRadius: 2 }}>
           <Typography variant="h6">Ma'lumot topilmadi</Typography>
           <Typography>
-            Talaba ma'lumotlari mavjud emas. Profilingizni to'ldirishingiz kerak bo'lishi mumkin.
+            Talaba ma'lumotlari mavjud emas. Profilingizni to'ldirishingiz kerak
+            bo'lishi mumkin.
           </Typography>
         </Alert>
       </Box>
@@ -361,7 +462,12 @@ const AccountPage: React.FC = () => {
           >
             <Grid container spacing={4}>
               <Grid item xs={12} md={4}>
-                <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  textAlign="center"
+                >
                   <Avatar
                     alt={student.full_name}
                     src={student.image}
@@ -373,7 +479,11 @@ const AccountPage: React.FC = () => {
                       boxShadow: theme.shadows[1], // Softer shadow
                     }}
                   />
-                  <Typography variant="h6" fontWeight={600} color="text.primary">
+                  <Typography
+                    variant="h6"
+                    fontWeight={600}
+                    color="text.primary"
+                  >
                     {student.full_name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -382,7 +492,12 @@ const AccountPage: React.FC = () => {
                 </Box>
               </Grid>
               <Grid item xs={12} md={8}>
-                <Typography variant="subtitle1" fontWeight={700} mb={theme.spacing(1)} sx={{ color: PRIMARY_BLUE }}>
+                <Typography
+                  variant="subtitle1"
+                  fontWeight={700}
+                  mb={theme.spacing(1)}
+                  sx={{ color: PRIMARY_BLUE }}
+                >
                   👤 Shaxsiy Maʼlumotlar
                 </Typography>
                 <Grid container spacing={theme.spacing(2)}>
@@ -401,7 +516,12 @@ const AccountPage: React.FC = () => {
                   ))}
                 </Grid>
                 <Divider sx={{ my: theme.spacing(4) }} />
-                <Typography variant="subtitle1" fontWeight={700} mb={theme.spacing(1)} sx={{ color: PRIMARY_BLUE }}>
+                <Typography
+                  variant="subtitle1"
+                  fontWeight={700}
+                  mb={theme.spacing(1)}
+                  sx={{ color: PRIMARY_BLUE }}
+                >
                   🎓 Taʼlim Maʼlumotlari
                 </Typography>
                 <Grid container spacing={theme.spacing(2)}>
@@ -423,7 +543,14 @@ const AccountPage: React.FC = () => {
       </Box>
 
       {/* Right Column: GPA Details and Application Status */}
-      <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: theme.spacing(2) }}>
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: theme.spacing(2),
+        }}
+      >
         {/* GPA Details Card */}
         <Card
           sx={{
@@ -434,7 +561,12 @@ const AccountPage: React.FC = () => {
             border: `1px solid ${theme.palette.grey[100]}`, // Very light border
           }}
         >
-          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: PRIMARY_BLUE }}>
+          <Typography
+            variant="h6"
+            fontWeight={700}
+            gutterBottom
+            sx={{ color: PRIMARY_BLUE }}
+          >
             📊 GPA Tafsilotlari
           </Typography>
           {student.gpa_records.length > 0 ? (
@@ -455,20 +587,30 @@ const AccountPage: React.FC = () => {
                   },
                 }}
               >
-                <Typography variant="body2" fontWeight={600} color="text.primary">
+                <Typography
+                  variant="body2"
+                  fontWeight={600}
+                  color="text.primary"
+                >
                   {gpa.education_year} | {gpa.level}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  GPA: <strong>{gpa.gpa}</strong>, Kredit: <strong>{gpa.credit_sum}</strong>, Fanlar:{" "}
+                  GPA: <strong>{gpa.gpa}</strong>, Kredit:{" "}
+                  <strong>{gpa.credit_sum}</strong>, Fanlar:{" "}
                   <strong>{gpa.subjects}</strong>
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  Qarz fanlar: {gpa.debt_subjects} | Transfer: {gpa.can_transfer ? "Ha" : "Yo‘q"}
+                  Qarz fanlar: {gpa.debt_subjects} | Transfer:{" "}
+                  {gpa.can_transfer ? "Ha" : "Yo‘q"}
                 </Typography>
               </Box>
             ))
           ) : (
-            <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ fontStyle: "italic" }}
+            >
               GPA maʼlumotlari mavjud emas.
             </Typography>
           )}
@@ -484,107 +626,63 @@ const AccountPage: React.FC = () => {
             border: `1px solid ${theme.palette.grey[100]}`, // Very light border
           }}
         >
-          <Typography variant="h6" fontWeight={700} gutterBottom color="text.primary">
+          <Typography
+            variant="h6"
+            fontWeight={700}
+            gutterBottom
+            color="text.primary"
+          >
             📝 Arizalar Holati
           </Typography>
-          {applications.length > 0 ? (
-            applications.map((app, index) => (
-              <Box
-                key={index}
-                mb={theme.spacing(4)}
-                sx={{ borderBottom: `1px dashed ${theme.palette.grey[300]}`, pb: theme.spacing(2) }}
-              >
-                <Typography fontWeight={600} gutterBottom color="text.primary">
-                  {app.application_type_name} — {new Date(app.submitted_at).toLocaleDateString() || "Nomaʼlum sana"}
-                </Typography>
-                <Stepper activeStep={steps.indexOf(app.status)} alternativeLabel sx={{ mb: theme.spacing(2) }}>
-                  {steps.map((label, stepIndex) => (
-                    <Step key={label}>
-                      {/* Only activate the step if its index is less than or equal to the current status index */}
-                      <StepLabel
-                        StepIconComponent={getStepIcon(app.status)}
-                        sx={{
-                            // Make labels faded if they are beyond the current status
-                            '& .MuiStepLabel-label': {
-                                color: stepIndex > steps.indexOf(app.status) ? theme.palette.grey[500] : theme.palette.text.primary,
-                            }
-                        }}
-                      >
-                        {label.charAt(0).toUpperCase() + label.slice(1)}
-                      </StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: theme.spacing(1) }}>
-                  Hozirgi holat:{" "}
-                  <Typography
-                    component="span"
-                    fontWeight={700}
-                    color={
-                      app.status === "accepted"
-                        ? "success.main"
-                        : app.status === "rejected"
-                        ? "error.main"
-                        : app.status === "pending"
-                        ? "warning.main"
-                        : PRIMARY_BLUE // Fallback to PRIMARY_BLUE for other states like 'reviewed'
-                    }
-                  >
-                    {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
-                  </Typography>
-                </Typography>
+          {applicationItems.length > 0 ? (
+  applicationItems.map((item, i) => (
+    <Box
+      key={i}
+      sx={{
+        bgcolor: theme.palette.grey[50],
+        borderRadius: Number(theme.shape.borderRadius) * 1,
+        p: theme.spacing(1.5),
+        mb: theme.spacing(2),
+        border: `1px solid ${theme.palette.grey[200]}`,
+      }}
+    >
+      <Typography variant="body2">
+        <strong>Ariza ID:</strong> {item.application}
+      </Typography>
+      <Typography variant="body2">
+        <strong>Yo‘nalish:</strong> {item.title}
+      </Typography>
+      <Typography variant="body2">
+        <strong>Komissiya izohi:</strong> {item.reviewer_comment || "Mavjud emas"}
+      </Typography>
+      {/* <Typography variant="body2">
+        <strong>Tekshirgan vaqt:</strong>{" "}
+        {item. ? new Date(item.reviewed_at).toLocaleString() : "—"}
+      </Typography> */}
+      <Typography variant="body2">
+        <strong>Ball:</strong>{" "}
+        {item.score ? (
+          <Typography
+            component="span"
+            fontWeight={700}
+            color={
+              item.score.value > 0 ? "success.main" : "error.main"
+            }
+          >
+            {item.score.value}
+          </Typography>
+        ) : (
+          "—"
+        )}
+      </Typography>
+    </Box>
+  ))
+) : (
+  <Typography variant="body2" color="text.secondary" fontStyle="italic">
+    Sizda hali baholangan yo‘nalishlar mavjud emas.
+  </Typography>
+)}
 
-                {applicationItems.filter((item) => item.application === app.id).length > 0 && (
-                  <Typography variant="body2" fontWeight={600} mt={2} mb={1}>
-                    Ijtimoiy Faollik Indeksi hujjatlari:
-                  </Typography>
-                )}
-                {applicationItems
-                  .filter((item) => item.application === app.id)
-                  .map((item, i) => (
-                    <Box
-                      key={i}
-                      sx={{
-                        bgcolor: theme.palette.grey[50],
-                        borderRadius: Number(theme.shape.borderRadius) * 1,
-                        p: theme.spacing(1.5),
-                        mb: theme.spacing(1),
-                        border: `1px solid ${theme.palette.grey[200]}`,
-                      }}
-                    >
-                      <Typography variant="body2">
-                        <strong>Yo‘nalish:</strong> {item.direction_name}
-                      </Typography>
-                      <Typography variant="body2">
-                        <strong>Izoh:</strong> {item.reviewer_comment || "—"}
-                      </Typography>
-                      <Typography variant="body2">
-                        <strong>Tekshirgan vaqt:</strong>{" "}
-                        {item.reviewed_at ? new Date(item.reviewed_at).toLocaleString() : "—"}
-                      </Typography>
-                      <Typography variant="body2">
-                      <strong>Ball:</strong>{" "}
-                      {item.score ? (
-                        <Typography
-                          component="span"
-                          fontWeight={700}
-                          color={item.score.value > 0 ? "success.main" : "error.main"}
-                        >
-                          {item.score.value}
-                        </Typography>
-                      ) : (
-                        "—"
-                      )}
-                    </Typography>
-                    </Box>
-                  ))}
-              </Box>
-            ))
-          ) : (
-            <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
-              Siz hali hech qanday Ijtimoiy Faollik indeksini baholash tizimi.
-            </Typography>
-          )}
         </Card>
       </Box>
     </Box>

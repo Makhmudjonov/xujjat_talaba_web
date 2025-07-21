@@ -43,17 +43,22 @@ const ApplicationFileCommentEditor: React.FC<Props> = ({ file, onUpdated }) => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const res = await fetchWithAuth(`https://tanlov.medsfera.uz/api/student/files/${file.id}/`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ comment: commentText }),
-      });
+      const res = await fetchWithAuth(
+        `https://tanlov.medsfera.uz/api/student/files/${file.id}/`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ comment: commentText }),
+        }
+      );
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(errorData.detail || "Fayl izohini yangilashda xatolik.");
+        throw new Error(
+          errorData.detail || "Fayl izohini yangilashda xatolik."
+        );
       }
 
       setEditing(false);
@@ -131,7 +136,11 @@ const ApplicationFileCommentEditor: React.FC<Props> = ({ file, onUpdated }) => {
           <Typography variant="body2" sx={{ color: "#555" }}>
             {file.comment ? `Izoh: ${file.comment}` : <em>Izoh yo‘q</em>}
           </Typography>
-          <IconButton onClick={handleEdit} size="small" sx={{ color: "#2563eb" }}>
+          <IconButton
+            onClick={handleEdit}
+            size="small"
+            sx={{ color: "#2563eb" }}
+          >
             <Edit fontSize="small" />
           </IconButton>
         </Box>

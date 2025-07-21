@@ -1,45 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CForm, CFormInput, CButton, CAlert, CContainer } from '@coreui/react';
-import { fetchWithAuth } from '../../utils/fetchWithAuth';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CForm, CFormInput, CButton, CAlert, CContainer } from "@coreui/react";
+import { fetchWithAuth } from "../../utils/fetchWithAuth";
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await fetchWithAuth('https://tanlov.medsfera.uz/api/admin/login/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetchWithAuth(
+        "https://tanlov.medsfera.uz/api/admin/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
 
         // 🔐 Token va foydalanuvchi ma'lumotlarini saqlash
-        localStorage.setItem('accessToken', data.access);
-        localStorage.setItem('refreshToken', data.refresh);
-        localStorage.setItem('fullName', data.user.full_name);
-        localStorage.setItem('role', data.user.role || 'admin');
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("fullName", data.user.full_name);
+        localStorage.setItem("role", data.user.role || "admin");
 
         // 🔁 Admin sahifaga yo‘naltirish
-        navigate('/admin');
-        window.location.reload()
+        navigate("/admin");
+        window.location.reload();
       } else {
         const errData = await response.json();
-        setError(errData.detail || 'Login yoki parol noto‘g‘ri');
+        setError(errData.detail || "Login yoki parol noto‘g‘ri");
       }
     } catch (err) {
-      setError('❌ Server bilan bog‘lanishda xatolik.');
+      setError("❌ Server bilan bog‘lanishda xatolik.");
     }
   };
 
