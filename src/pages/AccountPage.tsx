@@ -13,7 +13,11 @@ import {
   StepLabel,
   useTheme,
   Alert,
+  Chip,
+  Link,
+  Tooltip,
 } from "@mui/material";
+import FilePresentIcon from "@mui/icons-material/FilePresent";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -73,6 +77,17 @@ interface Score {
   scored_at: string;
 }
 
+interface ResultTest{
+  score: number;
+  correct: number;
+  total: number;
+}
+
+interface ResultGPA{
+  gpa: string;
+  score: number;
+}
+
 interface ApplicationItem {
   id: number;
   application: number;
@@ -87,6 +102,8 @@ interface ApplicationItem {
   files: ApplicationFile[];
   status: boolean;
   score: Score | null;
+  result_test: ResultTest | null;
+  result_gpa: ResultGPA | null
 }
 
 interface ScoreObj {
@@ -618,72 +635,152 @@ const AccountPage: React.FC = () => {
 
         {/* Application Status Card */}
         <Card
-          sx={{
-            p: theme.spacing(3),
-            borderRadius: Number(theme.shape.borderRadius) * 2,
-            boxShadow: theme.shadows[1], // Softer shadow
-            background: theme.palette.background.paper,
-            border: `1px solid ${theme.palette.grey[100]}`, // Very light border
-          }}
-        >
-          <Typography
-            variant="h6"
-            fontWeight={700}
-            gutterBottom
-            color="text.primary"
-          >
-            📝 Arizalar Holati
-          </Typography>
-          {applicationItems.length > 0 ? (
-  applicationItems.map((item, i) => (
-    <Box
-      key={i}
       sx={{
-        bgcolor: theme.palette.grey[50],
-        borderRadius: Number(theme.shape.borderRadius) * 1,
-        p: theme.spacing(1.5),
-        mb: theme.spacing(2),
-        border: `1px solid ${theme.palette.grey[200]}`,
+        p: theme.spacing(3),
+        borderRadius: Number(theme.shape.borderRadius) * 2,
+        boxShadow: theme.shadows[1],
+        background: theme.palette.background.paper,
+        border: `1px solid ${theme.palette.grey[100]}`,
       }}
     >
-      <Typography variant="body2">
-        <strong>Ariza ID:</strong> {item.application}
+      <Typography
+        variant="h6"
+        fontWeight={700}
+        gutterBottom
+        color="text.primary"
+      >
+        📝 Arizalar Holati
       </Typography>
-      <Typography variant="body2">
-        <strong>Yo‘nalish:</strong> {item.title}
-      </Typography>
-      <Typography variant="body2">
-        <strong>Komissiya izohi:</strong> {item.reviewer_comment || "Mavjud emas"}
-      </Typography>
-      {/* <Typography variant="body2">
-        <strong>Tekshirgan vaqt:</strong>{" "}
-        {item. ? new Date(item.reviewed_at).toLocaleString() : "—"}
-      </Typography> */}
-      <Typography variant="body2">
-        <strong>Ball:</strong>{" "}
-        {item.score ? (
-          <Typography
-            component="span"
-            fontWeight={700}
-            color={
-              item.score.value > 0 ? "success.main" : "error.main"
-            }
-          >
-            {item.score.value}
-          </Typography>
-        ) : (
-          "—"
-        )}
-      </Typography>
-    </Box>
-  ))
-) : (
-  <Typography variant="body2" color="text.secondary" fontStyle="italic">
-    Sizda hali baholangan yo‘nalishlar mavjud emas.
-  </Typography>
-)}
 
-        </Card>
+      {applicationItems.length > 0 ? (
+        applicationItems.map((item) => (
+          <Box
+            key={item.id}
+            sx={{
+              bgcolor: theme.palette.grey[50],
+              borderRadius: Number(theme.shape.borderRadius),
+              p: 2,
+              mb: 2,
+              border: `1px solid ${theme.palette.grey[200]}`,
+            }}
+          >
+            <Typography variant="body2" gutterBottom>
+              <strong>Ariza ID:</strong> {item.application}
+            </Typography>
+
+            <Typography variant="body2" gutterBottom>
+              <strong>Yo‘nalish:</strong> {item.title}
+            </Typography>
+
+            <Typography variant="body2" gutterBottom>
+              <strong>Komissiya izohi:</strong>{" "}
+              {item.reviewer_comment || "Mavjud emas"}
+            </Typography>
+
+            <Typography variant="body2">
+  <strong>Ball:</strong>{" "}
+  {item.title === "Kitobxonlik madaniyati" && item.result_test ? (
+    <Typography
+      component="span"
+      fontWeight={700}
+      color={item.result_test.score > 0 ? "success.main" : "error.main"}
+    >
+      {item.result_test.score}
+    </Typography>
+      ) : item.title === "Talabaning akademik o‘zlashtirishi" && item.result_gpa ? (
+        <Typography
+          component="span"
+          fontWeight={700}
+          color={item.result_gpa.score > 0 ? "success.main" : "error.main"}
+        >
+          {item.result_gpa.score}
+        </Typography>
+      ) : item.score ? (
+        <Typography
+          component="span"
+          fontWeight={700}
+          color={item.score.value > 0 ? "success.main" : "error.main"}
+        >
+          {item.score.value}
+        </Typography>
+      ) : (
+        "—"
+      )}
+    </Typography>
+
+
+            {/* Test natijasi */}
+            {item.result_test && (
+              <Typography variant="body2" gutterBottom>
+                <strong>Test:</strong>{" "}
+                {item.result_test.score} ball (
+                {item.result_test.correct} ta to‘g‘ri javob, jami{" "}
+                {item.result_test.total} savol)
+              </Typography>
+            )}
+
+            {/* GPA natijasi */}
+            {item.result_gpa && (
+              <Typography variant="body2" gutterBottom>
+                <strong>GPA:</strong> {item.result_gpa.gpa} →{" "}
+                {item.result_gpa.score} ball
+              </Typography>
+            )}
+
+            {/* Fayllar */}
+            {item.files.length > 0 && (
+              <>
+                <Typography variant="body2" fontWeight={600} mt={1}>
+                  Yuklangan fayllar:
+                </Typography>
+                <Box display="flex" flexWrap="wrap" mt={0.5}>
+                  {item.files.map((file) => (
+                    <Tooltip
+                      title={file.comment || "Fayl"}
+                      key={file.id}
+                      arrow
+                    >
+                      <Chip
+                        icon={<FilePresentIcon />}
+                        label={`Fayl #${file.id}`}
+                        component={Link}
+                        href={file.file_url}
+                        target="_blank"
+                        clickable
+                        sx={{ mr: 1, mb: 1 }}
+                      />
+                    </Tooltip>
+                  ))}
+                </Box>
+              </>
+            )}
+
+            {/* Status belgisi */}
+            <Box mt={1}>
+              {item.score ? (
+                <Chip
+                  icon={<CheckCircleOutlineIcon />}
+                  label="Baholangan"
+                  color="success"
+                  size="small"
+                />
+              ) : (
+                <Chip
+                  icon={<HourglassEmptyIcon />}
+                  label="Kutilmoqda"
+                  color="warning"
+                  size="small"
+                />
+              )}
+            </Box>
+          </Box>
+        ))
+      ) : (
+        <Typography variant="body2" color="text.secondary" fontStyle="italic">
+          Sizda hali baholangan yo‘nalishlar mavjud emas.
+        </Typography>
+      )}
+    </Card>
       </Box>
     </Box>
   );
